@@ -1,6 +1,11 @@
-﻿Class MainWindow
-    Dim da As New ProcivDataAdapter
+﻿Imports System.ComponentModel
 
+Class MainWindow
+    Dim da As New ProcivDataAdapter
+    Public Sub New()
+        InitializeComponent()
+        StatoWindow.RipristinaStato(Me)
+    End Sub
     Private Sub Button_Click(sender As Object, e As RoutedEventArgs)
         ingest()
         MsgBox("fatto")
@@ -16,4 +21,7 @@
         Next
     End Sub
 
+    Private Sub MainWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        StatoWindow.SalvaStato(Me)
+    End Sub
 End Class

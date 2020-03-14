@@ -62,6 +62,18 @@ Partial Friend NotInheritable Class MySettings
             Return CType(Me("connectionString"),String)
         End Get
     End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("*")>  _
+    Public Property windowState() As String
+        Get
+            Return CType(Me("windowState"),String)
+        End Get
+        Set
+            Me("windowState") = value
+        End Set
+    End Property
 End Class
 
 Namespace My

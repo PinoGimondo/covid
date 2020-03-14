@@ -4,6 +4,16 @@
     xmlns:local="clr-namespace:covid"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="Assets/Styles.xaml" />
+                <ResourceDictionary Source="Assets/Converters.xaml" />
+                <ResourceDictionary Source="Assets/Templates.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
     </Application.Resources>
+
 </Application>

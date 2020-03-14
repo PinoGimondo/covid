@@ -5,9 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:covid"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="COVID-19 Stat" Height="450" Width="800" Icon="img/Heart.ico">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="39,66,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-
+        <TabControl>
+            <TabItem Header="Analisi">
+                <Grid>
+                    <local:AnalisiControl x:Name="AC" ></local:AnalisiControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Gestione">
+                <Grid>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="39,66,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                </Grid>
+            </TabItem>            
+            
+            
+        </TabControl>
     </Grid>
+    
 </Window>

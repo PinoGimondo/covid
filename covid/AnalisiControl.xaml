@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="AnalisiControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:covid"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Background="LightGray" >
+            <Grid Background="#FFF3E9FE" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border >
+                            <Image Margin="4" Grid.Column="0" Source="/covid;component/img/chart-64.png"></Image>
+                        </Border>
+                        <Border   Grid.Column="1">
+                            <TextBlock Foreground="Navy" Name="tbTitle" Text="Strumento di analisi dei dati" Grid.Column="1" FontSize="18" Margin="2" FontWeight="Medium" ></TextBlock>
+                        </Border>
+                    </Grid>
+
+                </Border>
+                <Grid Grid.Row="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Name="list" MinWidth="140" Width="200"/>
+                        <ColumnDefinition Width="6"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Background="snow"  >
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border  Grid.Row="0">
+                                <ToolBar Background="LightGray" Visibility="Visible" >
+                                </ToolBar>
+                            </Border>
+                            <TreeView SelectedItemChanged="tvArgomenti_SelectedItemChanged" x:Name="tvArgomenti" AllowDrop="False" ItemTemplate="{StaticResource nodoArgomento}"
+                         Grid.Row="1"  MouseRightButtonDown="tvArgomenti_MouseRightButtonDown" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  >
+                                <TreeView.Resources>
+                                    <!-- Style the inactive selection the same as active -->
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                             Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}" />
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                             Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                                </TreeView.Resources>
+
+                                <TreeView.ContextMenu>
+                                    <ContextMenu Name="CM" >
+                                        <!--<MenuItem Name="mniAdd" Click="MenuItem_Click"  Header="Aggiungi" />
+                                        <MenuItem Name="mniRemove" Click="MenuItem_Click"  Header="Rimuovi" />
+                                        <Separator></Separator>
+                                        <MenuItem Name="mniUp" Click="MenuItem_Click"  Header="Move UP" />
+                                        <MenuItem Name="mniDown" Click="MenuItem_Click"  Header="Move DOWN" />
+                                        <Separator></Separator>
+                                        <MenuItem Name="mniOpenExternal" Click="MenuItem_Click"  Header="Apri in una nuova finestra" />-->
+                                    </ContextMenu>
+                                </TreeView.ContextMenu>
+                            </TreeView>
+
+                            <!--<ListBox ItemTemplate="{StaticResource itemBlock}" Grid.Row="1" Name="LB"></ListBox>-->
+                        </Grid>
+                    </Grid>
+                    <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1"    />
+                </Grid>
+    </Grid>
+</UserControl>

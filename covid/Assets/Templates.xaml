@@ -1,0 +1,59 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:covid">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Covid;component/Assets/converters.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate x:Key="ItemElementoConImmagine">
+        <StackPanel Orientation="Horizontal"  >
+            <Image Width="12" Height="12" Source="{Binding Image}" />
+            <TextBlock Margin="2,0,0,0" Text="{Binding Label}"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="itemPillola" >
+        <Grid Background="#E8FFFFFF" >
+            <Border BorderThickness="0,0,0,1" BorderBrush="#FFD5CDCD" >
+                <Grid Margin="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="LightGray" VerticalAlignment="Stretch" Padding="2" Background="#80FDFDFD" BorderThickness="1,0,1,0">
+                        <StackPanel Orientation="Vertical" Grid.Column="0">
+                            <Image Width="32" Height="32" Source="{Binding Path=tipoContenutoId, Converter={StaticResource tipoContenutoImageConverter}}"></Image>
+                            <TextBlock Margin="2" TextAlignment="Center" Text="{Binding Path=tipoContenuto}" Foreground="Gray" FontSize="7" TextWrapping="WrapWithOverflow" ></TextBlock>
+                        </StackPanel>
+                    </Border>
+                    <StackPanel Orientation="Vertical" Grid.Column="1" Margin="2" HorizontalAlignment="left" >
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="left" >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="left" >
+                                <Image Width="22" Height="22" Source="{Binding Path=tipoPillolaId, Converter={StaticResource tipoPillolaImageConverter}}"></Image>
+                                <TextBlock Margin="2" Text="{Binding Path=tipoPillola}" Foreground="Brown" FontSize="12" ></TextBlock>
+                            </StackPanel>
+                            <TextBlock Margin="2" FontWeight="Bold" TextAlignment="Left" TextWrapping="WrapWithOverflow" Text="{Binding Path=titolo}"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </DataTemplate>
+
+   <HierarchicalDataTemplate x:Key="nodoArgomento" ItemsSource="{Binding Path=argomentiDipendenti}" >
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="{Binding argomento}" Margin="2" >
+            <Image Width="16" Height="16" Source="/PillolEditor;component\Images\book-open.png" />
+            <TextBlock Margin="4,0,0,0"  Text="{Binding Path=argomento}" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
+
+    <HierarchicalDataTemplate x:Key="nodoConImmagine" ItemsSource="{Binding Path=NodiDipendenti}" >
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="{Binding ToolTip}" Margin="2" >
+            <Image Width="16" Height="16" Source="{Binding Path=Image}" />
+            <TextBlock Margin="4,0,0,0"  Text="{Binding Path=Label}" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
+
+</ResourceDictionary>

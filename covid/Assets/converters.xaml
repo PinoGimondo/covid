@@ -1,0 +1,15 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wp="clr-namespace:covid"  
+    >
+    <!--<wp:TipoPillolaImageConverter x:Key="tipoPillolaImageConverter" />
+    <wp:TipoContenutoImageConverter x:Key="tipoContenutoImageConverter" />
+    <wp:ListaTipiPillola x:Key="listaTipiPillola" />
+    <wp:ListaTipiContenuto x:Key="listaTipiContenuto" />-->
+
+    <!--<wp:SubjectNameFromIdConverter x:Key="subjectNameFromIdConverter" />
+    <wp:UtcToLocalTimeConverter x:Key="utcToLocalTimeConverter" />
+    <wp:SubjectImageConverter x:Key="subjectImageConverter" />-->
+
+</ResourceDictionary>
