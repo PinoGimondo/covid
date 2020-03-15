@@ -81,6 +81,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -113,8 +117,8 @@
     <Compile Include="Assets\Converters\TipoContenutoImageConverter.vb" />
     <Compile Include="Assets\Converters\TipoPillolaImageConverter.vb" />
     <Compile Include="Assets\Converters\UtcToLocalTimeConverter.vb" />
-    <Compile Include="Prociv.vb" />
-    <Compile Include="ProcivDataAdapter.vb" />
+    <Compile Include="OpenData.vb" />
+    <Compile Include="CovidOpenDataDataAdapter.vb" />
     <Compile Include="StatoWindow.vb" />
     <Page Include="AnalisiControl.xaml">
       <SubType>Designer</SubType>

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:covid"
+             xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -71,6 +72,9 @@
                         </Grid>
                     </Grid>
                     <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1"    />
+                    <Grid Grid.Column="2" >
+                       <wpf:ChromiumWebBrowser Address="https://www.google.com" x:Name="WB" />
+                    </Grid>
                 </Grid>
     </Grid>
 </UserControl>
