@@ -1,6 +1,6 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports System.Data.SqlClient
 Imports Microsoft.Office.Interop
-Imports Microsoft.Office.Interop.Excel
 Imports ServiziDB
 
 Public Class CovidOpenDataDataAdapter
@@ -48,10 +48,10 @@ Public Class CovidOpenDataDataAdapter
         Dim xlApp As New Excel.ApplicationClass
         xlApp.DisplayAlerts = False
 
-        Dim xlWorkBook As Workbook = xlApp.Workbooks.Open(nf)
-        Dim xlWorkSheet As Worksheet = xlWorkBook.Worksheets("CSV_4_COMS")
+        Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook = xlApp.Workbooks.Open(nf)
+        Dim xlWorkSheet As Microsoft.Office.Interop.Excel.Worksheet = xlWorkBook.Worksheets("CSV_4_COMS")
         Try
-            xlWorkSheet.SaveAs(nfc, XlFileFormat.xlCSVWindows)
+            xlWorkSheet.SaveAs(nfc, Microsoft.Office.Interop.Excel.XlFileFormat.xlCSVWindows)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -64,6 +64,17 @@ Public Class CovidOpenDataDataAdapter
         ingestFile(s, "ecdc")
 
     End Sub
+
+    Public Function getDataset(tipo As String) As DataTable
+        Dim cmd As New SqlCommand("getDataset")
+        cmd.CommandType = System.Data.CommandType.StoredProcedure
+        cmd.Parameters.AddWithValue("@tipo", tipo)
+        Dim dt As DataTable = Nothing
+        DB.CaricaDati(cmd, dt)
+        Return dt
+    End Function
+
+
 
 
 End Class

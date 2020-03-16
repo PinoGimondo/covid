@@ -7,6 +7,20 @@
         <ResourceDictionary Source="/Covid;component/Assets/converters.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
+    <DataTemplate x:Key="itemProvincia">
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="CIAO" Margin="2" >
+            <CheckBox></CheckBox>
+            <TextBlock Margin="4,0,0,0"  Text="{Binding denominazioneProvincia}" />
+        </StackPanel>
+    </DataTemplate>
+
+    <HierarchicalDataTemplate x:Key="nodoProvincia" >
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="CIAO" Margin="2" >
+            <TextBlock Margin="4,0,0,0"  Text="{Binding denominazione_provincia}" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
+
+
     <DataTemplate x:Key="ItemElementoConImmagine">
         <StackPanel Orientation="Horizontal"  >
             <Image Width="12" Height="12" Source="{Binding Image}" />

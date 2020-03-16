@@ -45,35 +45,30 @@
                                 <ToolBar Background="LightGray" Visibility="Visible" >
                                 </ToolBar>
                             </Border>
-                            <TreeView SelectedItemChanged="tvArgomenti_SelectedItemChanged" x:Name="tvArgomenti" AllowDrop="False" ItemTemplate="{StaticResource nodoArgomento}"
-                         Grid.Row="1"  MouseRightButtonDown="tvArgomenti_MouseRightButtonDown" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  >
-                                <TreeView.Resources>
-                                    <!-- Style the inactive selection the same as active -->
-                                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
-                             Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}" />
-                                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
-                             Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
-                                </TreeView.Resources>
+                            <ListView Name="lvProvince"  
+                                      ItemTemplate="{StaticResource itemProvincia}"
+                                      Grid.Row="1"  
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"  >
 
-                                <TreeView.ContextMenu>
+                                <!--<TreeView.ContextMenu>
                                     <ContextMenu Name="CM" >
-                                        <!--<MenuItem Name="mniAdd" Click="MenuItem_Click"  Header="Aggiungi" />
+                                        --><!--<MenuItem Name="mniAdd" Click="MenuItem_Click"  Header="Aggiungi" />
                                         <MenuItem Name="mniRemove" Click="MenuItem_Click"  Header="Rimuovi" />
                                         <Separator></Separator>
                                         <MenuItem Name="mniUp" Click="MenuItem_Click"  Header="Move UP" />
                                         <MenuItem Name="mniDown" Click="MenuItem_Click"  Header="Move DOWN" />
                                         <Separator></Separator>
-                                        <MenuItem Name="mniOpenExternal" Click="MenuItem_Click"  Header="Apri in una nuova finestra" />-->
+                                        <MenuItem Name="mniOpenExternal" Click="MenuItem_Click"  Header="Apri in una nuova finestra" />--><!--
                                     </ContextMenu>
-                                </TreeView.ContextMenu>
-                            </TreeView>
+                                </TreeView.ContextMenu>-->
+                            </ListView>
 
                             <!--<ListBox ItemTemplate="{StaticResource itemBlock}" Grid.Row="1" Name="LB"></ListBox>-->
                         </Grid>
                     </Grid>
                     <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1"    />
                     <Grid Grid.Column="2" >
-                       <wpf:ChromiumWebBrowser Address="https://www.google.com" x:Name="WB" />
+                       <wpf:ChromiumWebBrowser x:Name="WB" />
                     </Grid>
                 </Grid>
     </Grid>

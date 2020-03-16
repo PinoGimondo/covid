@@ -1,0 +1,68 @@
+﻿
+Class Svg
+    Public Shared Function rect(cssClass As String, r As Rect) As XElement
+        Return rect(cssClass, r.X, r.Y, r.Width, r.Height)
+    End Function
+
+    Public Shared Function rect(cssClass As String, x As Double, y As Double, Optional width As Double = -1, Optional height As Double = -1) As XElement
+        Dim e As XElement = New XElement("rect")
+        e.Add(New XAttribute("class", cssClass))
+        e.Add(New XAttribute("x", x.ToString))
+        e.Add(New XAttribute("y", y.ToString))
+
+        If width >= 0 Then
+            e.Add(New XAttribute("width", width.ToString))
+        End If
+        If height >= 0 Then
+            e.Add(New XAttribute("height", height.ToString))
+        End If
+        Return e
+    End Function
+
+
+    Public Shared Function ellipse(cssClass As String, cx As Double, cy As Double, rx As Double, ry As Double) As XElement
+        Dim e As XElement = New XElement("ellipse")
+        e.Add(New XAttribute("class", cssClass))
+        e.Add(New XAttribute("cx", cx.ToString))
+        e.Add(New XAttribute("cy", cy.ToString))
+        e.Add(New XAttribute("rx", rx.ToString))
+        e.Add(New XAttribute("ry", ry.ToString))
+        Return e
+
+    End Function
+
+    Public Shared Function circle(cssClass As String, cx As Double, cy As Double, r As Double) As XElement
+        Return ellipse(cssClass, cx, cy, r, r)
+    End Function
+
+    Public Shared Function linea(cssClass As String, x1 As Double, y1 As Double, x2 As Double, y2 As Double) As XElement
+
+        Dim e As XElement = New XElement("line")
+        e.Add(New XAttribute("class", cssClass))
+        e.Add(New XAttribute("x1", x1.ToString))
+        e.Add(New XAttribute("y1", y1.ToString))
+        e.Add(New XAttribute("x2", x2.ToString))
+        e.Add(New XAttribute("y2", y2.ToString))
+        Return e
+
+    End Function
+
+    Public Shared Function text(cssClass As String, x As Double, y As Double, testo As String) As XElement
+        Dim e As XElement = New XElement("text")
+        e.Add(New XAttribute("class", cssClass))
+        e.Add(New XAttribute("x", x.ToString))
+        e.Add(New XAttribute("y", y.ToString))
+        e.Value = testo
+        Return e
+    End Function
+
+    Public Shared Function group(cssClass As String, Optional content As XElement = Nothing) As XElement
+        Dim e As XElement = New XElement("g")
+        e.Add(New XAttribute("class", cssClass))
+        If content IsNot Nothing Then
+            e.Add(content)
+        End If
+        Return e
+    End Function
+
+End Class

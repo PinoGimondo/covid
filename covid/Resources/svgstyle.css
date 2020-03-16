@@ -1,0 +1,65 @@
+#container {
+    height:1600px;
+}
+
+svg {
+ }
+
+.sfondo {
+    fill: #d7dff0   ;
+    stroke:gray;
+    stroke-width:2;
+}
+
+.rigaGiorno {
+    stroke: gray;
+    stroke-width: 1;
+    opacity:.5
+}
+
+.rigaMese {
+    stroke: black;
+    stroke-width: 1;
+    opacity: .8
+}
+
+.testoGiorno {
+    font-weight:300;
+    font: 12px verdana;
+    stroke: navy;
+    text-anchor :middle;
+    opacity:.6;
+}
+
+.testoMese {
+    font-weight: 300;
+    font: 18px verdana;
+    stroke: navy;
+    text-anchor: middle;
+    opacity: .8;
+}
+
+
+
+.rectino {
+    fill: yellow;
+    stroke: red;
+    stroke-width: 2;
+    rx: 10;
+}
+
+.ellisse {
+    fill: yellow;
+    stroke: red;
+    stroke-width: 2;  
+}
+
+.line {
+    stroke: red;
+    stroke-width: 2;
+}
+
+
+.small {
+    font: italic 13px sans-serif;
+}

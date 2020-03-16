@@ -117,9 +117,12 @@
     <Compile Include="Assets\Converters\TipoContenutoImageConverter.vb" />
     <Compile Include="Assets\Converters\TipoPillolaImageConverter.vb" />
     <Compile Include="Assets\Converters\UtcToLocalTimeConverter.vb" />
+    <Compile Include="Grafico.vb" />
+    <Compile Include="Model\Provincia.vb" />
     <Compile Include="OpenData.vb" />
     <Compile Include="CovidOpenDataDataAdapter.vb" />
     <Compile Include="StatoWindow.vb" />
+    <Compile Include="Svg.vb" />
     <Page Include="AnalisiControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -208,6 +211,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\OggettiStatici\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\htmlpage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\svgstyle.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
