@@ -1,5 +1,9 @@
 ﻿
 Class Svg
+    Public Shared Function str(v As Double) As String
+        Return v.ToString.Replace(",", ".")
+    End Function
+
     Public Shared Function rect(cssClass As String, r As Rect) As XElement
         Return rect(cssClass, r.X, r.Y, r.Width, r.Height)
     End Function
@@ -7,14 +11,14 @@ Class Svg
     Public Shared Function rect(cssClass As String, x As Double, y As Double, Optional width As Double = -1, Optional height As Double = -1) As XElement
         Dim e As XElement = New XElement("rect")
         e.Add(New XAttribute("class", cssClass))
-        e.Add(New XAttribute("x", x.ToString))
-        e.Add(New XAttribute("y", y.ToString))
+        e.Add(New XAttribute("x", str(x)))
+        e.Add(New XAttribute("y", str(y)))
 
         If width >= 0 Then
-            e.Add(New XAttribute("width", width.ToString))
+            e.Add(New XAttribute("width", str(width)))
         End If
         If height >= 0 Then
-            e.Add(New XAttribute("height", height.ToString))
+            e.Add(New XAttribute("height", str(height)))
         End If
         Return e
     End Function
@@ -23,10 +27,10 @@ Class Svg
     Public Shared Function ellipse(cssClass As String, cx As Double, cy As Double, rx As Double, ry As Double) As XElement
         Dim e As XElement = New XElement("ellipse")
         e.Add(New XAttribute("class", cssClass))
-        e.Add(New XAttribute("cx", cx.ToString))
-        e.Add(New XAttribute("cy", cy.ToString))
-        e.Add(New XAttribute("rx", rx.ToString))
-        e.Add(New XAttribute("ry", ry.ToString))
+        e.Add(New XAttribute("cx", str(cx)))
+        e.Add(New XAttribute("cy", str(cy)))
+        e.Add(New XAttribute("rx", str(rx)))
+        e.Add(New XAttribute("ry", str(ry)))
         Return e
 
     End Function
@@ -39,10 +43,10 @@ Class Svg
 
         Dim e As XElement = New XElement("line")
         e.Add(New XAttribute("class", cssClass))
-        e.Add(New XAttribute("x1", x1.ToString))
-        e.Add(New XAttribute("y1", y1.ToString))
-        e.Add(New XAttribute("x2", x2.ToString))
-        e.Add(New XAttribute("y2", y2.ToString))
+        e.Add(New XAttribute("x1", str(x1)))
+        e.Add(New XAttribute("y1", str(y1)))
+        e.Add(New XAttribute("x2", str(x2)))
+        e.Add(New XAttribute("y2", str(y2)))
         Return e
 
     End Function
@@ -50,8 +54,8 @@ Class Svg
     Public Shared Function text(cssClass As String, x As Double, y As Double, testo As String) As XElement
         Dim e As XElement = New XElement("text")
         e.Add(New XAttribute("class", cssClass))
-        e.Add(New XAttribute("x", x.ToString))
-        e.Add(New XAttribute("y", y.ToString))
+        e.Add(New XAttribute("x", str(x)))
+        e.Add(New XAttribute("y", str(y)))
         e.Value = testo
         Return e
     End Function

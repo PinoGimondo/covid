@@ -39,6 +39,11 @@ svg {
     opacity: .8;
 }
 
+.S0 {
+    fill: yellow;
+    stroke: red;
+    stroke-width: 1;
+}
 
 
 .rectino {

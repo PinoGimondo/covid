@@ -9,7 +9,7 @@
 
     <DataTemplate x:Key="itemProvincia">
         <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="CIAO" Margin="2" >
-            <CheckBox></CheckBox>
+            <CheckBox IsChecked="{Binding selezionata}" ></CheckBox>
             <TextBlock Margin="4,0,0,0"  Text="{Binding denominazioneProvincia}" />
         </StackPanel>
     </DataTemplate>

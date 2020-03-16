@@ -45,7 +45,7 @@
                                 <ToolBar Background="LightGray" Visibility="Visible" >
                                 </ToolBar>
                             </Border>
-                            <ListView Name="lvProvince"  
+                    <ListView Name="lvProvince"  CheckBox.Unchecked="ListBox_CheckChanged" CheckBox.Checked="ListBox_CheckChanged"   
                                       ItemTemplate="{StaticResource itemProvincia}"
                                       Grid.Row="1"  
                                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"  >

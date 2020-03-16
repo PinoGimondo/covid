@@ -1,4 +1,5 @@
-﻿Imports System.Data
+﻿Imports System.Collections.ObjectModel
+Imports System.Data
 
 Public Class Provincia
     Public Property codiceProvincia As String
@@ -6,6 +7,9 @@ Public Class Provincia
     Public Property denominazioneRegione As String
     Public Property siglaProvincia As String
     Public Property denominazioneProvincia As String
+    Public Property selezionata As Boolean
+
+    Public Property dati As New ListaDati
 
     Public Sub leggi(dr As DataRow)
         codiceProvincia = dr("codice_provincia")
@@ -27,5 +31,21 @@ Public Class ListaProvince
             Me.Add(p.codiceProvincia, p)
         Next
     End Sub
+
+    Public Function province() As ObservableCollection(Of Provincia)
+        Dim o As New ObservableCollection(Of Provincia)
+        For Each p As Provincia In Me.Values.OrderBy(Function(x) x.denominazioneProvincia)
+            o.Add(p)
+        Next
+        Return o
+    End Function
+
+    Public Function provinceSelezionate() As List(Of Provincia)
+        Dim o As New List(Of Provincia)
+        For Each p As Provincia In Me.Values.Where(Function(x) x.selezionata).OrderBy(Function(x) x.denominazioneProvincia)
+            o.Add(p)
+        Next
+        Return o
+    End Function
 
 End Class

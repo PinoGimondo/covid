@@ -118,6 +118,7 @@
     <Compile Include="Assets\Converters\TipoPillolaImageConverter.vb" />
     <Compile Include="Assets\Converters\UtcToLocalTimeConverter.vb" />
     <Compile Include="Grafico.vb" />
+    <Compile Include="Model\Dati.vb" />
     <Compile Include="Model\Provincia.vb" />
     <Compile Include="OpenData.vb" />
     <Compile Include="CovidOpenDataDataAdapter.vb" />
