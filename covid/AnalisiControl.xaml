@@ -8,68 +8,76 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="32"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Border Grid.Row="0" Background="LightGray" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="LightGray" >
             <Grid Background="#FFF3E9FE" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="32"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Border >
-                            <Image Margin="4" Grid.Column="0" Source="/covid;component/img/chart-64.png"></Image>
-                        </Border>
-                        <Border   Grid.Column="1">
-                            <TextBlock Foreground="Navy" Name="tbTitle" Text="Strumento di analisi dei dati" Grid.Column="1" FontSize="18" Margin="2" FontWeight="Medium" ></TextBlock>
-                        </Border>
-                    </Grid>
-
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border >
+                    <Image Margin="4" Grid.Column="0" Source="/covid;component/img/chart-64.png"></Image>
                 </Border>
-                <Grid Grid.Row="1">
+                <Border   Grid.Column="1">
+                    <TextBlock Foreground="Navy" Name="tbTitle" Text="Strumento di analisi dei dati" Grid.Column="1" FontSize="18" Margin="2" FontWeight="Medium" ></TextBlock>
+                </Border>
+            </Grid>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Name="list" MinWidth="140" Width="200"/>
-                        <ColumnDefinition Width="6"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+        </Border>
+        <Grid Grid.Row="1">
 
-                    <Grid Grid.Column="0" Background="snow"  >
-                        <Grid Grid.Row="2">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Border  Grid.Row="0">
-                                <ToolBar Background="LightGray" Visibility="Visible" >
-                                </ToolBar>
-                            </Border>
-                    <ListView Name="lvProvince"  CheckBox.Unchecked="ListBox_CheckChanged" CheckBox.Checked="ListBox_CheckChanged"   
-                                      ItemTemplate="{StaticResource itemProvincia}"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Name="list" MinWidth="140" Width="200"/>
+                <ColumnDefinition Width="6"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Background="snow"  >
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Border  Grid.Row="0">
+                        <ToolBar Background="LightGray" Visibility="Visible" >
+                        </ToolBar>
+                    </Border>
+                    <TreeView Name="TV"  CheckBox.Unchecked="TV_CheckChanged" CheckBox.Checked="TV_CheckChanged"   
+                                      ItemTemplate="{StaticResource nodoPaese}"
                                       Grid.Row="1"  
                                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"  >
 
-                                <!--<TreeView.ContextMenu>
+                        <!--<TreeView.ContextMenu>
                                     <ContextMenu Name="CM" >
-                                        --><!--<MenuItem Name="mniAdd" Click="MenuItem_Click"  Header="Aggiungi" />
+                                        -->
+                        <!--<MenuItem Name="mniAdd" Click="MenuItem_Click"  Header="Aggiungi" />
                                         <MenuItem Name="mniRemove" Click="MenuItem_Click"  Header="Rimuovi" />
                                         <Separator></Separator>
                                         <MenuItem Name="mniUp" Click="MenuItem_Click"  Header="Move UP" />
                                         <MenuItem Name="mniDown" Click="MenuItem_Click"  Header="Move DOWN" />
                                         <Separator></Separator>
-                                        <MenuItem Name="mniOpenExternal" Click="MenuItem_Click"  Header="Apri in una nuova finestra" />--><!--
+                                        <MenuItem Name="mniOpenExternal" Click="MenuItem_Click"  Header="Apri in una nuova finestra" />-->
+                        <!--
                                     </ContextMenu>
                                 </TreeView.ContextMenu>-->
-                            </ListView>
-
-                            <!--<ListBox ItemTemplate="{StaticResource itemBlock}" Grid.Row="1" Name="LB"></ListBox>-->
-                        </Grid>
-                    </Grid>
-                    <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1"    />
-                    <Grid Grid.Column="2" >
-                       <wpf:ChromiumWebBrowser x:Name="WB" />
-                    </Grid>
+                    </TreeView>
+                    <!--<ListBox ItemTemplate="{StaticResource itemBlock}" Grid.Row="1" Name="LB"></ListBox>-->
                 </Grid>
+            </Grid>
+            <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1"    />
+            <Grid Grid.Column="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical">
+                    <Slider Name="slScalaValori"    ValueChanged="slScalaValori_ValueChanged" Orientation="Vertical" Height="300" Minimum="100" Maximum="10000" Value="1000"></Slider>
+                </StackPanel>
+                <wpf:ChromiumWebBrowser x:Name="WB" Grid.Column="1" />
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

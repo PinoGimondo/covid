@@ -1,43 +1,73 @@
-﻿Imports System.Data
+﻿Imports System.Collections.ObjectModel
+Imports System.Data
+Imports System.Windows.Threading
 Imports CefSharp
 Public Class AnalisiControl
-    Dim Province As New ListaProvince
+    Dim C As Casi = Application.C
+    Public WithEvents jsc As JSConnector
+    Protected WithEvents renderTimer As DispatcherTimer
+    Dim surl As String = "http://www.pardesca.it:4080/static/pillole/"
+    Dim G As Grafico
 
     Private Sub AnalisiControl_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        caricaProvince()
-        lvProvince.ItemsSource = Province.province
+        Dim oc As New ObservableCollection(Of ElementoAnalisi)
+        Dim p As New Paese
+        p.codicePaese = "fr"
+        p.denominazionePaese = "Francia"
+        Dim d As New Paese
+        d.codicePaese = "de"
+        d.denominazionePaese = "Germany"
+
+        oc.Add(C.italia)
+        oc.Add(p)
+        oc.Add(d)
+
+        TV.ItemsSource = oc
+
+        renderTimer = New DispatcherTimer()
+        renderTimer.Interval = New TimeSpan(0, 0, 0, 0, 200)
+
+        jsc = New JSConnector(Me.WB)
+
+        G = New Grafico
+
         MostraSvg()
+
     End Sub
 
-    Protected Sub caricaProvince()
-        Dim da As New CovidOpenDataDataAdapter
-        Dim dt As DataTable = da.getDataset("province")
-        Province.leggi(dt)
-        dt = da.getDataset("casi_italiani")
-        Dim ld As New ListaDati
-        ld.leggi(dt)
-        Dim d As dato
-        Dim prov As String = ""
-        Dim p As Provincia = Nothing
-        For Each d In ld.OrderBy(Function(x) x.codiceProvincia).OrderBy(Function(s) s.data)
-            If prov <> d.codiceProvincia Then
-                prov = d.codiceProvincia
-                p = Province.Item(prov)
-            End If
-            If p IsNot Nothing Then
-                p.dati.Add(d)
-            End If
-        Next
-    End Sub
 
     Private Sub MostraSvg()
-        Dim G As New Grafico
-        Dim surl As String = "http://www.pardesca.it:4080/static/pillole/"
-        Dim s As String = String.Format(My.Resources.htmlpage, My.Resources.svgstyle, G.generaSvg(Province.provinceSelezionate))
-        WB.LoadHtml(s, surl)
+        If WB IsNot Nothing And G IsNot Nothing Then
+            G.MaxVertical = slScalaValori.Value
+            Dim s As String = String.Format(My.Resources.htmlpage, surl, My.Resources.svgstyle, My.Resources.svgScript, G.generaSvg(C.province.provinceSelezionate))
+            WB.LoadHtml(s, surl)
+        End If
     End Sub
 
-    Private Sub ListBox_CheckChanged(sender As System.Object, e As System.Windows.RoutedEventArgs)
-        MostraSvg()
+    Private Sub TV_CheckChanged(sender As Object, e As RoutedEventArgs)
+        InvalidateSvg()
+    End Sub
+
+    Private Sub slScalaValori_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double))
+        InvalidateSvg()
+    End Sub
+
+    Private Sub InvalidateSvg()
+        If renderTimer IsNot Nothing Then
+            renderTimer.Stop()
+            renderTimer.Start()
+        End If
+    End Sub
+
+    Private Async Sub renderTimer_TickAsync(sender As Object, e As EventArgs) Handles renderTimer.Tick
+        renderTimer.Stop()
+        If jsc IsNot Nothing And G IsNot Nothing Then
+            G.MaxVertical = slScalaValori.Value
+            Dim s As String = G.generaSvg(C.province.provinceSelezionate).Replace(vbCr, "").Replace(vbLf, "")
+            ' s = "PIPPO"
+            Dim res As Object = Await jsc.execJSAsync(String.Format("pageCommand('new_svg','{0}' );", s))
+        End If
+
+
     End Sub
 End Class

@@ -1,3 +1,6 @@
+html, body {
+    height: 100%;
+}
 #container {
     height:1600px;
 }
@@ -6,7 +9,7 @@ svg {
  }
 
 .sfondo {
-    fill: #d7dff0   ;
+    fill: #eaebed ;
     stroke:gray;
     stroke-width:2;
 }
@@ -31,6 +34,12 @@ svg {
     opacity:.6;
 }
 
+.boxLegend {
+    fill: white;
+    opacity: .8;
+    box-shadow: 0 0 10px #999;
+}
+
 .testoMese {
     font-weight: 300;
     font: 18px verdana;
@@ -39,32 +48,61 @@ svg {
     opacity: .8;
 }
 
+
+.LS {
+    opacity: .2;
+    stroke-width:2px;
+}
+
+.LL {
+    font-family: Verdana;
+    font-size: 14px;
+    text-anchor: start;
+    dominant-baseline: middle;
+    background-color: transparent;
+    opacity: .6;
+}
+
+.S {
+    font-family: FontAwesome;
+    font-size: 14px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    cursor: pointer;
+    background-color: transparent;
+    opacity: .6;
+}
+
 .S0 {
-    fill: yellow;
-    stroke: red;
-    stroke-width: 1;
+    stroke: blue;
 }
-
-
-.rectino {
-    fill: yellow;
+.S1 {
     stroke: red;
-    stroke-width: 2;
-    rx: 10;
 }
-
-.ellisse {
-    fill: yellow;
-    stroke: red;
-    stroke-width: 2;  
+.S2 {
+    stroke: green;
 }
-
-.line {
-    stroke: red;
-    stroke-width: 2;
+.S3 {
+    stroke: darkmagenta;
 }
-
-
-.small {
-    font: italic 13px sans-serif;
+.S4 {
+    stroke: orange;
+}
+.S5 {
+    stroke: violet;
+}
+.S6 {
+    stroke: darkcyan;
+}
+.S7 {
+    stroke: black;
+}
+.S8 {
+    stroke: salmon;
+}
+.S9 {
+    stroke:  greenyellow;
+}
+.S10 {
+    stroke:  yellow ;
 }

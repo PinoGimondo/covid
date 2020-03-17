@@ -113,13 +113,20 @@
     <Compile Include="AnalisiControl.xaml.vb">
       <DependentUpon>AnalisiControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Assets\Converters\FlagConverter.vb" />
     <Compile Include="Assets\Converters\SubjectNameFromIdConverter.vb" />
     <Compile Include="Assets\Converters\TipoContenutoImageConverter.vb" />
-    <Compile Include="Assets\Converters\TipoPillolaImageConverter.vb" />
     <Compile Include="Assets\Converters\UtcToLocalTimeConverter.vb" />
     <Compile Include="Grafico.vb" />
+    <Compile Include="JSConnector.vb" />
     <Compile Include="Model\Dati.vb" />
     <Compile Include="Model\Provincia.vb" />
+    <Compile Include="Model\Regione.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="OpenData.vb" />
     <Compile Include="CovidOpenDataDataAdapter.vb" />
     <Compile Include="StatoWindow.vb" />
@@ -180,11 +187,6 @@
       <VBMyExtensionTemplateID>Microsoft.VisualBasic.WPF.MyExtension</VBMyExtensionTemplateID>
       <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -192,9 +194,12 @@
     </Compile>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <None Include="img\flags\bulkRename.bat" />
+    <None Include="img\flags\Search results for Industry - Flaticon.url" />
+    <None Include="img\flags\VDI AM.url" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
@@ -218,6 +223,215 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\svgstyle.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\flags\ad.png" />
+    <Resource Include="img\flags\ae.png" />
+    <Resource Include="img\flags\af.png" />
+    <Resource Include="img\flags\ag.png" />
+    <Resource Include="img\flags\al.png" />
+    <Resource Include="img\flags\am.png" />
+    <Resource Include="img\flags\ao.png" />
+    <Resource Include="img\flags\ar.png" />
+    <Resource Include="img\flags\at.png" />
+    <Resource Include="img\flags\au.png" />
+    <Resource Include="img\flags\az.png" />
+    <Resource Include="img\flags\ba.png" />
+    <Resource Include="img\flags\bb.png" />
+    <Resource Include="img\flags\bd.png" />
+    <Resource Include="img\flags\be.png" />
+    <Resource Include="img\flags\bf.png" />
+    <Resource Include="img\flags\bg.png" />
+    <Resource Include="img\flags\bh.png" />
+    <Resource Include="img\flags\bi.png" />
+    <Resource Include="img\flags\bj.png" />
+    <Resource Include="img\flags\bn.png" />
+    <Resource Include="img\flags\bo.png" />
+    <Resource Include="img\flags\br.png" />
+    <Resource Include="img\flags\bs.png" />
+    <Resource Include="img\flags\bt.png" />
+    <Resource Include="img\flags\bw.png" />
+    <Resource Include="img\flags\by.png" />
+    <Resource Include="img\flags\bz.png" />
+    <Resource Include="img\flags\ca.png" />
+    <Resource Include="img\flags\cd.png" />
+    <Resource Include="img\flags\cf.png" />
+    <Resource Include="img\flags\cg.png" />
+    <Resource Include="img\flags\ch.png" />
+    <Resource Include="img\flags\ci.png" />
+    <Resource Include="img\flags\ck.png" />
+    <Resource Include="img\flags\cl.png" />
+    <Resource Include="img\flags\cm.png" />
+    <Resource Include="img\flags\cn.png" />
+    <Resource Include="img\flags\co.png" />
+    <Resource Include="img\flags\cr.png" />
+    <Resource Include="img\flags\cu.png" />
+    <Resource Include="img\flags\cv.png" />
+    <Resource Include="img\flags\cy.png" />
+    <Resource Include="img\flags\cz.png" />
+    <Resource Include="img\flags\de.png" />
+    <Resource Include="img\flags\dj.png" />
+    <Resource Include="img\flags\dk.png" />
+    <Resource Include="img\flags\dm.png" />
+    <Resource Include="img\flags\do.png" />
+    <Resource Include="img\flags\dz.png" />
+    <Resource Include="img\flags\ec.png" />
+    <Resource Include="img\flags\ee.png" />
+    <Resource Include="img\flags\eg.png" />
+    <Resource Include="img\flags\eh.png" />
+    <Resource Include="img\flags\er.png" />
+    <Resource Include="img\flags\es.png" />
+    <Resource Include="img\flags\et.png" />
+    <Resource Include="img\flags\fi.png" />
+    <Resource Include="img\flags\fj.png" />
+    <Resource Include="img\flags\fm.png" />
+    <Resource Include="img\flags\fr.png" />
+    <Resource Include="img\flags\ga.png" />
+    <Resource Include="img\flags\gb.png" />
+    <Resource Include="img\flags\gd.png" />
+    <Resource Include="img\flags\ge.png" />
+    <Resource Include="img\flags\gh.png" />
+    <Resource Include="img\flags\gm.png" />
+    <Resource Include="img\flags\gn.png" />
+    <Resource Include="img\flags\gq.png" />
+    <Resource Include="img\flags\gr.png" />
+    <Resource Include="img\flags\gt.png" />
+    <Resource Include="img\flags\gw.png" />
+    <Resource Include="img\flags\gy.png" />
+    <Resource Include="img\flags\hn.png" />
+    <Resource Include="img\flags\hr.png" />
+    <Resource Include="img\flags\ht.png" />
+    <Resource Include="img\flags\hu.png" />
+    <Resource Include="img\flags\id.png" />
+    <Resource Include="img\flags\ie.png" />
+    <Resource Include="img\flags\il.png" />
+    <Resource Include="img\flags\in.png" />
+    <Resource Include="img\flags\iq.png" />
+    <Resource Include="img\flags\ir.png" />
+    <Resource Include="img\flags\is.png" />
+    <Resource Include="img\flags\it.png" />
+    <Resource Include="img\flags\jm.png" />
+    <Resource Include="img\flags\jo.png" />
+    <Resource Include="img\flags\jp.png" />
+    <Resource Include="img\flags\ke.png" />
+    <Resource Include="img\flags\kg.png" />
+    <Resource Include="img\flags\kh.png" />
+    <Resource Include="img\flags\ki.png" />
+    <Resource Include="img\flags\km.png" />
+    <Resource Include="img\flags\kn.png" />
+    <Resource Include="img\flags\kp.png" />
+    <Resource Include="img\flags\kr.png" />
+    <Resource Include="img\flags\ks.png" />
+    <Resource Include="img\flags\kw.png" />
+    <Resource Include="img\flags\kz.png" />
+    <Resource Include="img\flags\la.png" />
+    <Resource Include="img\flags\lb.png" />
+    <Resource Include="img\flags\lc.png" />
+    <Resource Include="img\flags\li.png" />
+    <Resource Include="img\flags\lk.png" />
+    <Resource Include="img\flags\lr.png" />
+    <Resource Include="img\flags\ls.png" />
+    <Resource Include="img\flags\lt.png" />
+    <Resource Include="img\flags\lu.png" />
+    <Resource Include="img\flags\lv.png" />
+    <Resource Include="img\flags\ly.png" />
+    <Resource Include="img\flags\ma.png" />
+    <Resource Include="img\flags\mc.png" />
+    <Resource Include="img\flags\md.png" />
+    <Resource Include="img\flags\me.png" />
+    <Resource Include="img\flags\mg.png" />
+    <Resource Include="img\flags\mh.png" />
+    <Resource Include="img\flags\mk.png" />
+    <Resource Include="img\flags\ml.png" />
+    <Resource Include="img\flags\mm.png" />
+    <Resource Include="img\flags\mn.png" />
+    <Resource Include="img\flags\mr.png" />
+    <Resource Include="img\flags\mt.png" />
+    <Resource Include="img\flags\mu.png" />
+    <Resource Include="img\flags\mv.png" />
+    <Resource Include="img\flags\mw.png" />
+    <Resource Include="img\flags\mx.png" />
+    <Resource Include="img\flags\my.png" />
+    <Resource Include="img\flags\mz.png" />
+    <Resource Include="img\flags\na.png" />
+    <Resource Include="img\flags\ne.png" />
+    <Resource Include="img\flags\ng.png" />
+    <Resource Include="img\flags\ni.png" />
+    <Resource Include="img\flags\nl.png" />
+    <Resource Include="img\flags\no.png" />
+    <Resource Include="img\flags\np.png" />
+    <Resource Include="img\flags\nr.png" />
+    <Resource Include="img\flags\nu.png" />
+    <Resource Include="img\flags\nz.png" />
+    <Resource Include="img\flags\om.png" />
+    <Resource Include="img\flags\pa.png" />
+    <Resource Include="img\flags\pe.png" />
+    <Resource Include="img\flags\pg.png" />
+    <Resource Include="img\flags\ph.png" />
+    <Resource Include="img\flags\pk.png" />
+    <Resource Include="img\flags\pl.png" />
+    <Resource Include="img\flags\pt.png" />
+    <Resource Include="img\flags\pw.png" />
+    <Resource Include="img\flags\py.png" />
+    <Resource Include="img\flags\qa.png" />
+    <Resource Include="img\flags\ro.png" />
+    <Resource Include="img\flags\rs.png" />
+    <Resource Include="img\flags\ru.png" />
+    <Resource Include="img\flags\rw.png" />
+    <Resource Include="img\flags\sa.png" />
+    <Resource Include="img\flags\sb.png" />
+    <Resource Include="img\flags\sc.png" />
+    <Resource Include="img\flags\sd.png" />
+    <Resource Include="img\flags\se.png" />
+    <Resource Include="img\flags\settore_2.png" />
+    <Resource Include="img\flags\settore_4.png" />
+    <Resource Include="img\flags\sg.png" />
+    <Resource Include="img\flags\si.png" />
+    <Resource Include="img\flags\sk.png" />
+    <Resource Include="img\flags\sl.png" />
+    <Resource Include="img\flags\sm.png" />
+    <Resource Include="img\flags\sn.png" />
+    <Resource Include="img\flags\so.png" />
+    <Resource Include="img\flags\sr.png" />
+    <Resource Include="img\flags\ss.png" />
+    <Resource Include="img\flags\st.png" />
+    <Resource Include="img\flags\sv.png" />
+    <Resource Include="img\flags\sy.png" />
+    <Resource Include="img\flags\sz.png" />
+    <Resource Include="img\flags\td.png" />
+    <Resource Include="img\flags\tg.png" />
+    <Resource Include="img\flags\th.png" />
+    <Resource Include="img\flags\tj.png" />
+    <Resource Include="img\flags\tl.png" />
+    <Resource Include="img\flags\tm.png" />
+    <Resource Include="img\flags\tn.png" />
+    <Resource Include="img\flags\to.png" />
+    <Resource Include="img\flags\tr.png" />
+    <Resource Include="img\flags\tt.png" />
+    <Resource Include="img\flags\tv.png" />
+    <Resource Include="img\flags\tw.png" />
+    <Resource Include="img\flags\tz.png" />
+    <Resource Include="img\flags\ua.png" />
+    <Resource Include="img\flags\ug.png" />
+    <Resource Include="img\flags\us.png" />
+    <Resource Include="img\flags\uy.png" />
+    <Resource Include="img\flags\uz.png" />
+    <Resource Include="img\flags\va.png" />
+    <Resource Include="img\flags\vc.png" />
+    <Resource Include="img\flags\ve.png" />
+    <Resource Include="img\flags\vn.png" />
+    <Resource Include="img\flags\vu.png" />
+    <Resource Include="img\flags\ws.png" />
+    <Resource Include="img\flags\ye.png" />
+    <Resource Include="img\flags\za.png" />
+    <Resource Include="img\flags\zm.png" />
+    <Resource Include="img\flags\zw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\noImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\svgScript.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

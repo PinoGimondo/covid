@@ -1,8 +1,9 @@
 ﻿<ResourceDictionary 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:wp="clr-namespace:covid"  
-    >
+    xmlns:wp="clr-namespace:covid">
+
+    <wp:FlagConverter x:Key="flagConverter" />
     <!--<wp:TipoPillolaImageConverter x:Key="tipoPillolaImageConverter" />
     <wp:TipoContenutoImageConverter x:Key="tipoContenutoImageConverter" />
     <wp:ListaTipiPillola x:Key="listaTipiPillola" />

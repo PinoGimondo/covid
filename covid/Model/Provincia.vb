@@ -2,14 +2,13 @@
 Imports System.Data
 
 Public Class Provincia
+    Inherits ElementoAnalisi
+
     Public Property codiceProvincia As String
     Public Property codiceRegione As String
     Public Property denominazioneRegione As String
     Public Property siglaProvincia As String
     Public Property denominazioneProvincia As String
-    Public Property selezionata As Boolean
-
-    Public Property dati As New ListaDati
 
     Public Sub leggi(dr As DataRow)
         codiceProvincia = dr("codice_provincia")
@@ -42,7 +41,7 @@ Public Class ListaProvince
 
     Public Function provinceSelezionate() As List(Of Provincia)
         Dim o As New List(Of Provincia)
-        For Each p As Provincia In Me.Values.Where(Function(x) x.selezionata).OrderBy(Function(x) x.denominazioneProvincia)
+        For Each p As Provincia In Me.Values.Where(Function(x) x.isSelected).OrderBy(Function(x) x.denominazioneProvincia)
             o.Add(p)
         Next
         Return o

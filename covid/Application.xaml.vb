@@ -1,6 +1,19 @@
-﻿Class Application
+﻿Imports System.Globalization
+Imports System.Threading
+Imports System.Windows.Markup
 
-    ' Gli eventi a livello di applicazione, ad esempio Startup, Exit e DispatcherUnhandledException,
-    ' possono essere gestiti in questo file.
+Class Application
+    Public Shared C As Casi
+
+    Private Sub Application_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
+        Thread.CurrentThread.CurrentCulture = New System.Globalization.CultureInfo("it-IT")
+        Thread.CurrentThread.CurrentUICulture = New System.Globalization.CultureInfo("it-IT")
+        FrameworkElement.LanguageProperty.OverrideMetadata(GetType(FrameworkElement), New FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)))
+        C = New Casi
+        C.caricaDati()
+    End Sub
+
+    Private Sub Application_Exit(sender As Object, e As ExitEventArgs) Handles Me.[Exit]
+    End Sub
 
 End Class

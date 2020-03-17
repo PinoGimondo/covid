@@ -68,12 +68,13 @@ Namespace My.Resources
         '''    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot; /&gt;
         '''    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
         '''    &lt;title&gt;test&lt;/title&gt;
-        '''    {0}
+        '''    &lt;link href=&quot;{0}Content/font-awesome.min.css&quot; rel=&quot;stylesheet&quot; /&gt;
+        '''    &lt;style&gt;{1}&lt;/style&gt;
         '''&lt;/head&gt;
         '''&lt;body style=&quot;background-color:lavender&quot;&gt;
-        '''    &lt;div&gt;{1}&lt;/div&gt;
-        '''&lt;/body&gt;
-        '''&lt;/html&gt;.
+        '''    &lt;div id=&quot;svgContainer&quot;&gt;{3}&lt;/div&gt;
+        '''    &lt;script src=&quot;{0}Scripts/jquery-3.4.1.min.js&quot;&gt;&lt;/script&gt;
+        '''   [stringa troncata]&quot;;.
         '''</summary>
         Friend ReadOnly Property htmlpage() As String
             Get
@@ -82,7 +83,55 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Cerca una stringa localizzata simile a .
+        '''  Cerca una stringa localizzata simile a function test(msg) {
+        '''    alert(msg);
+        '''}.
+        '''</summary>
+        Friend ReadOnly Property svgScript() As String
+            Get
+                Return ResourceManager.GetString("svgScript", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Cerca una stringa localizzata simile a #container {
+        '''    height:1600px;
+        '''}
+        '''
+        '''svg {
+        ''' }
+        '''
+        '''.sfondo {
+        '''    fill: #d7dff0   ;
+        '''    stroke:gray;
+        '''    stroke-width:2;
+        '''}
+        '''
+        '''.rigaGiorno {
+        '''    stroke: gray;
+        '''    stroke-width: 1;
+        '''    opacity:.5
+        '''}
+        '''
+        '''.rigaMese {
+        '''    stroke: black;
+        '''    stroke-width: 1;
+        '''    opacity: .8
+        '''}
+        '''
+        '''.testoGiorno {
+        '''    font-weight:300;
+        '''    font: 12px verdana;
+        '''    stroke: navy;
+        '''    text-anchor :middle;
+        '''    opacity:.6;
+        '''}
+        '''
+        '''.testoMese {
+        '''    font-weight: 300;
+        '''    font: 18px verdana;
+        '''    stroke: navy;
+        '''    text-anchor:  [stringa troncata]&quot;;.
         '''</summary>
         Friend ReadOnly Property svgstyle() As String
             Get
