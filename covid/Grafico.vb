@@ -116,7 +116,7 @@
 
     Protected Function generaPunto(serie As Integer, d As Dato, tipoDato As tipoDatoEnum) As XElement
         Dim e As XElement = Svg.text("S S" & serie.ToString, vToX(d.data), vToY(d.getDato(tipoDato)), "\uf055")
-        e.Add(New XElement("title", String.Format("{0}|{1}|{2}", d.data.ToString("dd/MM/yyyy"), d.Label, d.getDato(tipoDato))))
+        e.Add(New XElement("title", String.Format("{0}|{1}|{2}", d.data.ToString("dd/MM/yyyy"), d.Label, Math.Round(d.getDato(tipoDato)))))
         Return e
     End Function
 
