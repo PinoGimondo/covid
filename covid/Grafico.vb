@@ -18,7 +18,7 @@
     End Sub
 
     Sub init()
-        RViewPort = New Rect(0, 0, 2200, 1170)
+        RViewPort = New Rect(0, 0, 1500, 900)
         xDay = 21
         ndays = RViewPort.Width / xDay
         altMese = 30
