@@ -1,7 +1,9 @@
 ﻿Imports System.Data
 Public Enum tipoDatoEnum
     totaleCasi = 0
-    totCasi100k = 1
+    totaleCasi100k = 1
+    nuoviCasi = 2
+    nuoviCasi100k = 3
 End Enum
 
 Public Class Casi
@@ -50,6 +52,8 @@ Public Class Dato
     Public Property data As Date
     Public Property totaleCasi As Integer
     Public Property totaleCasiPer100k As Double
+    Public Property nuoviCasi As Integer
+    Public Property nuoviCasiPer100k As Double
 
     Public Sub leggi(dr As DataRow)
         data = dr("data")
@@ -57,14 +61,20 @@ Public Class Dato
         Label = dr("denominazione_provincia")
         totaleCasi = dr("totale_casi")
         totaleCasiPer100k = dr("totale_casi_x100k")
+        nuoviCasi = dr("incremento_casi")
+        nuoviCasiPer100k = dr("incremento_casi_x100k")
     End Sub
 
     Public Function getDato(tipo As tipoDatoEnum) As Double
         Select Case tipo
             Case tipoDatoEnum.totaleCasi
                 Return totaleCasi
-            Case tipoDatoEnum.totCasi100k
+            Case tipoDatoEnum.totaleCasi100k
                 Return totaleCasiPer100k
+            Case tipoDatoEnum.nuoviCasi
+                Return nuoviCasi
+            Case tipoDatoEnum.nuoviCasi100k
+                Return nuoviCasiPer100k
             Case Else
                 Return 0
         End Select

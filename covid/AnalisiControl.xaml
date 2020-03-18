@@ -79,6 +79,8 @@
                     <ComboBox SelectionChanged="TipoDati_SelectionChanged" Padding="4" Name="TipoDati" SelectedIndex="1"  Width="200">
                         <ComboBoxItem>Casi attivi</ComboBoxItem>
                         <ComboBoxItem>Casi attivi x 100K abitanti</ComboBoxItem>
+                        <ComboBoxItem>Nuovi Casi attivi</ComboBoxItem>
+                        <ComboBoxItem>Nuovi Casi attivi x 100K abitanti</ComboBoxItem>
                     </ComboBox>
                 </ToolBar>
                 <StackPanel Orientation="Vertical" Grid.Row="1"  >
