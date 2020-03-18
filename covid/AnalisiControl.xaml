@@ -76,14 +76,13 @@
                 </Grid.ColumnDefinitions>
                 <ToolBar Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center">
                     <TextBlock Margin="6">Dati: </TextBlock>
-                    <ComboBox Padding="4" Name="TipoDati" SelectedIndex="1"  Width="200">
+                    <ComboBox SelectionChanged="TipoDati_SelectionChanged" Padding="4" Name="TipoDati" SelectedIndex="1"  Width="200">
                         <ComboBoxItem>Casi attivi</ComboBoxItem>
                         <ComboBoxItem>Casi attivi x 100K abitanti</ComboBoxItem>
                     </ComboBox>
-                    
                 </ToolBar>
                 <StackPanel Orientation="Vertical" Grid.Row="1"  >
-                    <Slider Name="slScalaValori"   ValueChanged="slScalaValori_ValueChanged" Orientation="Vertical" Height="300" Minimum="100" Maximum="10000" Value="1000"></Slider>
+                    <Slider Name="slScalaValori"   ValueChanged="slScalaValori_ValueChanged" Orientation="Vertical" Height="300" Minimum="10" Maximum="10000" Value="1000"></Slider>
                 </StackPanel>
                 <wpf:ChromiumWebBrowser x:Name="WB" Grid.Column="1" Grid.Row="1" />
             </Grid>

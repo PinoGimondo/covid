@@ -1,4 +1,8 @@
 ﻿Imports System.Data
+Public Enum tipoDatoEnum
+    totaleCasi = 0
+    totCasi100k = 1
+End Enum
 
 Public Class Casi
     Public province As New ListaProvince
@@ -45,13 +49,27 @@ Public Class Dato
     Public Property Label As String
     Public Property data As Date
     Public Property totaleCasi As Integer
+    Public Property totaleCasiPer100k As Double
 
     Public Sub leggi(dr As DataRow)
         data = dr("data")
         codice = dr("codice_provincia")
         Label = dr("denominazione_provincia")
         totaleCasi = dr("totale_casi")
+        totaleCasiPer100k = dr("totale_casi_x100k")
     End Sub
+
+    Public Function getDato(tipo As tipoDatoEnum) As Double
+        Select Case tipo
+            Case tipoDatoEnum.totaleCasi
+                Return totaleCasi
+            Case tipoDatoEnum.totCasi100k
+                Return totaleCasiPer100k
+            Case Else
+                Return 0
+        End Select
+    End Function
+
 End Class
 
 Public Class ListaDati

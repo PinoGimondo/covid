@@ -30,7 +30,7 @@
         xdSpace = (xDay - sDot) / 2
     End Sub
 
-    Public Function generaSvg(provinceSelezionate As List(Of Provincia)) As String
+    Public Function generaSvg(provinceSelezionate As List(Of Provincia), tipoDati As tipoDatoEnum) As String
         init()
 
         Dim xd As XDocument = XDocument.Parse("<svg width=""100%"" height=""100%"" ></svg>")
@@ -83,7 +83,7 @@
             For Each c As Dato In p.dati
                 If c.totaleCasi > 0 Then
                     If pp IsNot Nothing Then
-                        dprov.Add(generaLinea(serie, pp, c))
+                        dprov.Add(generaLinea(serie, pp, c, tipoDati))
                     End If
                     pp = c
                 End If
@@ -91,7 +91,7 @@
 
             For Each c As Dato In p.dati
                 If c.totaleCasi > 0 Then
-                    dprov.Add(generaPunto(serie, c))
+                    dprov.Add(generaPunto(serie, c, tipoDati))
                 End If
             Next
             dati.Add(dprov)
@@ -109,14 +109,14 @@
         Return e
     End Function
 
-    Protected Function generaLinea(serie As Integer, d1 As Dato, d2 As Dato) As XElement
-        Dim e As XElement = Svg.linea("LS S" & serie.ToString, vToX(d1.data), vToY(d1.totaleCasi), vToX(d2.data), vToY(d2.totaleCasi))
+    Protected Function generaLinea(serie As Integer, d1 As Dato, d2 As Dato, tipoDato As tipoDatoEnum) As XElement
+        Dim e As XElement = Svg.linea("LS S" & serie.ToString, vToX(d1.data), vToY(d1.getDato(tipoDato)), vToX(d2.data), vToY(d2.getDato(tipoDato)))
         Return e
     End Function
 
-    Protected Function generaPunto(serie As Integer, d As Dato) As XElement
-        Dim e As XElement = Svg.text("S S" & serie.ToString, vToX(d.data), vToY(d.totaleCasi), "\uf055")
-        e.Add(New XElement("title", String.Format("{0}|{1}|{2}", d.data.ToString("dd/MM/yyyy"), d.Label, d.totaleCasi)))
+    Protected Function generaPunto(serie As Integer, d As Dato, tipoDato As tipoDatoEnum) As XElement
+        Dim e As XElement = Svg.text("S S" & serie.ToString, vToX(d.data), vToY(d.getDato(tipoDato)), "\uf055")
+        e.Add(New XElement("title", String.Format("{0}|{1}|{2}", d.data.ToString("dd/MM/yyyy"), d.Label, d.getDato(tipoDato))))
         Return e
     End Function
 

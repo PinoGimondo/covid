@@ -39,7 +39,7 @@ Public Class AnalisiControl
     Private Sub MostraSvg()
         If WB IsNot Nothing And G IsNot Nothing Then
             G.MaxVertical = slScalaValori.Value
-            Dim s As String = String.Format(My.Resources.htmlpage, surl, My.Resources.svgstyle, My.Resources.svgScript, G.generaSvg(C.province.provinceSelezionate))
+            Dim s As String = String.Format(My.Resources.htmlpage, surl, My.Resources.svgstyle, My.Resources.svgScript, G.generaSvg(C.province.provinceSelezionate, TipoDati.SelectedIndex))
             WB.LoadHtml(s, surl)
         End If
     End Sub
@@ -63,11 +63,15 @@ Public Class AnalisiControl
         renderTimer.Stop()
         If jsc IsNot Nothing And G IsNot Nothing Then
             G.MaxVertical = slScalaValori.Value
-            Dim s As String = G.generaSvg(C.province.provinceSelezionate).Replace(vbCr, "").Replace(vbLf, "")
+            Dim s As String = G.generaSvg(C.province.provinceSelezionate, TipoDati.SelectedIndex).Replace(vbCr, "").Replace(vbLf, "")
             ' s = "PIPPO"
             Dim res As Object = Await jsc.execJSAsync(String.Format("pageCommand('new_svg','{0}' );", s))
         End If
 
 
+    End Sub
+
+    Private Sub TipoDati_SelectionChanged(sender As Object, e As SelectionChangedEventArgs)
+        InvalidateSvg()
     End Sub
 End Class
