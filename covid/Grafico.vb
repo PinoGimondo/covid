@@ -72,7 +72,7 @@
         Dim boxLegenda As XElement = Svg.group("")
         boxLegenda.Add(New XAttribute("transform", String.Format("translate({0},{1}) rotate(0)", Svg.str(xDay / 2), Svg.str(altGiorno + altMese + 14))))
         If provinceSelezionate.Count > 0 Then
-            boxLegenda.Add(Svg.rect("boxLegend", xDay / 0, 0, 200, (provinceSelezionate.Count - 1) * distLegenda + 40))
+            boxLegenda.Add(Svg.rect("boxLegend shadow", xDay / 0, 0, 200, (provinceSelezionate.Count - 1) * distLegenda + 40))
         End If
 
         For Each p As Provincia In provinceSelezionate

@@ -34,10 +34,16 @@ svg {
     opacity:.6;
 }
 
+.shadow {
+    -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+    filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+    /* Similar syntax to box-shadow */
+}
+
 .boxLegend {
     fill: white;
-    opacity: .8;
-    box-shadow: 0 0 10px #999;
+    opacity: .9;
+    box-shadow: 10px 10px 5px grey;
 }
 
 .testoMese {
