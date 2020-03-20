@@ -14,7 +14,6 @@
         </StackPanel>
     </HierarchicalDataTemplate>
 
-
     <HierarchicalDataTemplate x:Key="nodoRegione" ItemsSource="{Binding province}" ItemTemplate="{StaticResource nodoProvincia}" >
         <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="{Binding denominazioneRegione}" Margin="2" >
             <CheckBox IsChecked="{Binding isSelected}" ></CheckBox>
@@ -22,9 +21,9 @@
         </StackPanel>
     </HierarchicalDataTemplate>
 
-
     <HierarchicalDataTemplate x:Key="nodoPaese" ItemsSource="{Binding regioni}" ItemTemplate="{StaticResource nodoRegione}" >
         <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="dati italia" Margin="2" >
+            <CheckBox IsChecked="{Binding isSelected}" Margin="2" ></CheckBox>
             <Image Source="{Binding Converter={StaticResource flagConverter}}" Width="22" ></Image>
             <TextBlock FontWeight="Bold" Margin="4,0,0,0"  Text="{Binding denominazionePaese}" />
         </StackPanel>

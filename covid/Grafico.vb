@@ -30,7 +30,7 @@
         xdSpace = (xDay - sDot) / 2
     End Sub
 
-    Public Function generaSvg(serieSelezionate As List(Of ElementoAnalisi), tipoDati As tipoDatoEnum) As String
+    Public Function generaSvg(serieSelezionate As List(Of ElementoAnalisi), tipoDati As tipoDatoEnum, mostraValori As Boolean) As String
         init()
 
         Dim xd As XDocument = XDocument.Parse("<svg width=""100%"" height=""100%"" ></svg>")
@@ -91,7 +91,7 @@
 
             For Each c As Dato In p.dati
                 If c.totaleCasi > 0 Then
-                    dprov.Add(generaPunto(serie, c, tipoDati))
+                    dprov.Add(generaPunto(serie, c, tipoDati, mostraValori))
                 End If
             Next
             dati.Add(dprov)
@@ -114,10 +114,19 @@
         Return e
     End Function
 
-    Protected Function generaPunto(serie As Integer, d As Dato, tipoDato As tipoDatoEnum) As XElement
-        Dim e As XElement = Svg.text("S S" & serie.ToString, vToX(d.data), vToY(d.getDato(tipoDato)), "\uf055")
-        e.Add(New XElement("title", String.Format("{0}|{1}|{2}", d.data.ToString("dd/MM/yyyy"), d.Label, Math.Round(d.getDato(tipoDato)))))
-        Return e
+    Protected Function generaPunto(serie As Integer, d As Dato, tipoDato As tipoDatoEnum, visualizzaValore As Boolean) As XElement
+        Dim g As XElement = Svg.group("")
+        Dim x As Double = vToX(d.data)
+        Dim y As Double = vToY(d.getDato(tipoDato))
+        Dim v As String = Math.Round(d.getDato(tipoDato)).ToString
+        Dim e As XElement = Svg.text("S S" & serie.ToString, x, y, "\uf055")
+        e.Add(New XElement("title", String.Format("{0}|{1}|{2}", d.data.ToString("dd/MM/yyyy"), d.Label, v)))
+        g.Add(e)
+        If visualizzaValore Then
+            g.Add(Svg.text("testoValore S" + serie.ToString, x, y - 10, v))
+        End If
+
+        Return g
     End Function
 
     Public Function vToY(value As Double) As Double

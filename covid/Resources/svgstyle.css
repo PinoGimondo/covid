@@ -54,6 +54,12 @@ svg {
     opacity: .8;
 }
 
+.testoValore {
+    font-weight: 200;
+    font: 8px verdana;
+    text-anchor: middle;
+    opacity: .6;
+}
 
 .LS {
     opacity: .2;

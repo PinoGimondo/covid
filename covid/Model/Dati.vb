@@ -4,6 +4,10 @@ Public Enum tipoDatoEnum
     totaleCasi100k = 1
     nuoviCasi = 2
     nuoviCasi100k = 3
+    morti = 4
+    morti100k = 5
+    nuoviMorti = 6
+    nuoviMorti100k = 7
 End Enum
 
 Public Class Casi
@@ -19,6 +23,9 @@ Public Class Casi
 
         dt = da.getDataset("regioni").Tables(0)
         regioni.leggi(dt)
+
+        dt = da.getDataset("paesi").Tables(0)
+        paesi.leggi(dt)
 
         Dim dsDati As DataSet = da.getDataset("casi")
 
@@ -51,6 +58,26 @@ Public Class Casi
             End If
             If r IsNot Nothing Then
                 r.dati.Add(d)
+            End If
+        Next
+
+        ld = New ListaDati
+        ld.leggi(dsDati.Tables(2))
+        Dim pae As String = ""
+        Dim pa As Paese = Nothing
+
+        For Each d In ld.OrderBy(Function(x) x.codice).OrderBy(Function(s) s.data)
+            If pae <> d.codice Then
+                pae = d.codice
+                If paesi.ContainsKey(pae) Then
+                    pa = paesi.Item(pae)
+                Else
+                    pa = Nothing
+                End If
+            End If
+
+            If pa IsNot Nothing Then
+                pa.dati.Add(d)
             End If
         Next
 
@@ -111,6 +138,14 @@ Public Class Dato
                 Return nuoviCasi
             Case tipoDatoEnum.nuoviCasi100k
                 Return nuoviCasiPer100k
+            Case tipoDatoEnum.morti
+                Return totaleMorti
+            Case tipoDatoEnum.morti100k
+                Return totaleMortiPer100k
+            Case tipoDatoEnum.nuoviMorti
+                Return nuoviMorti
+            Case tipoDatoEnum.nuoviMorti100k
+                Return nuoviMortiPer100k
             Case Else
                 Return 0
         End Select

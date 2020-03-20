@@ -16,6 +16,12 @@ Public Class Paese
     Public Sub New()
         tipo = "C"
     End Sub
+
+    Public Sub leggi(dr As DataRow)
+        codice = dr("codice_paese")
+        label = dr("denominazione_paese")
+    End Sub
+
     Public ReadOnly Property codicePaese
         Get
             Return codice
@@ -33,12 +39,12 @@ Public Class ListaPaesi
     Inherits Dictionary(Of String, Paese)
 
     Public Sub leggi(dt As DataTable)
-        'Dim r As Regione
-        'For Each dr As DataRow In dt.Rows
-        '    r = New Regione
-        '    r.leggi(dr)
-        '    Me.Add(r.codiceRegione, r)
-        'Next
+        Dim p As Paese
+        For Each dr As DataRow In dt.Rows
+            p = New Paese
+            p.leggi(dr)
+            Me.Add(p.codicePaese, p)
+        Next
     End Sub
 
     Public Function paesiSelezionati() As List(Of Paese)
