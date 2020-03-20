@@ -3,11 +3,12 @@ Imports System.Data
 Imports System.Windows.Threading
 Imports CefSharp
 Public Class AnalisiControl
-    Dim C As Casi = Application.C
+    ReadOnly C As Casi = Application.C
     Public WithEvents jsc As JSConnector
     Protected WithEvents renderTimer As DispatcherTimer
     Dim surl As String = "http://www.pardesca.it:4080/static/pillole/"
     Dim G As Grafico
+    Dim l As New List(Of ElementoAnalisi)
 
     Private Sub AnalisiControl_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Dim oc As New ObservableCollection(Of ElementoAnalisi)
@@ -38,12 +39,15 @@ Public Class AnalisiControl
     Private Sub MostraSvg()
         If WB IsNot Nothing And G IsNot Nothing Then
             G.MaxVertical = slScalaValori.Value
-            Dim s As String = String.Format(My.Resources.htmlpage, surl, My.Resources.svgstyle, My.Resources.svgScript, G.generaSvg(C.province.provinceSelezionate, TipoDati.SelectedIndex))
+            Dim s As String = String.Format(My.Resources.htmlpage, surl, My.Resources.svgstyle, My.Resources.svgScript, G.generaSvg(l, TipoDati.SelectedIndex))
             WB.LoadHtml(s, surl)
         End If
     End Sub
 
-    Private Sub TV_CheckChanged(sender As Object, e As RoutedEventArgs)
+    Private Sub TV_UnChecked(sender As Object, e As RoutedEventArgs)
+        InvalidateSvg()
+    End Sub
+    Private Sub TV_Checked(sender As Object, e As RoutedEventArgs)
         InvalidateSvg()
     End Sub
 
@@ -62,8 +66,11 @@ Public Class AnalisiControl
         renderTimer.Stop()
         If jsc IsNot Nothing And G IsNot Nothing Then
             G.MaxVertical = slScalaValori.Value
-            Dim s As String = G.generaSvg(C.province.provinceSelezionate, TipoDati.SelectedIndex).Replace(vbCr, "").Replace(vbLf, "")
-            ' s = "PIPPO"
+            l.Clear()
+            l.AddRange(C.regioni.regioniSelezionate)
+            l.AddRange(C.province.provinceSelezionate)
+
+            Dim s As String = G.generaSvg(l, TipoDati.SelectedIndex).Replace(vbCr, "").Replace(vbLf, "")
             Dim res As Object = Await jsc.execJSAsync(String.Format("pageCommand('new_svg','{0}' );", s))
         End If
 

@@ -30,7 +30,7 @@
         xdSpace = (xDay - sDot) / 2
     End Sub
 
-    Public Function generaSvg(provinceSelezionate As List(Of Provincia), tipoDati As tipoDatoEnum) As String
+    Public Function generaSvg(serieSelezionate As List(Of ElementoAnalisi), tipoDati As tipoDatoEnum) As String
         init()
 
         Dim xd As XDocument = XDocument.Parse("<svg width=""100%"" height=""100%"" ></svg>")
@@ -71,13 +71,13 @@
 
         Dim boxLegenda As XElement = Svg.group("")
         boxLegenda.Add(New XAttribute("transform", String.Format("translate({0},{1}) rotate(0)", Svg.str(xDay / 2), Svg.str(altGiorno + altMese + 14))))
-        If provinceSelezionate.Count > 0 Then
-            boxLegenda.Add(Svg.rect("boxLegend shadow", xDay / 0, 0, 200, (provinceSelezionate.Count - 1) * distLegenda + 40))
+        If serieSelezionate.Count > 0 Then
+            boxLegenda.Add(Svg.rect("boxLegend shadow", xDay / 0, 0, 200, (serieSelezionate.Count - 1) * distLegenda + 40))
         End If
 
-        For Each p As Provincia In provinceSelezionate
+        For Each p As ElementoAnalisi In serieSelezionate
             dprov = Svg.group("")
-            boxLegenda.Add(generaLegenda(serie, p.denominazioneProvincia))
+            boxLegenda.Add(generaLegenda(serie, p.label))
 
             Dim pp As Dato = Nothing
             For Each c As Dato In p.dati

@@ -42,7 +42,7 @@
                         <ToolBar Background="LightGray" Visibility="Visible" >
                         </ToolBar>
                     </Border>
-                    <TreeView Name="TV"  CheckBox.Unchecked="TV_CheckChanged" CheckBox.Checked="TV_CheckChanged"   
+                    <TreeView Name="TV"  CheckBox.Unchecked="TV_UnChecked" CheckBox.Checked="TV_Checked"   
                                       ItemTemplate="{StaticResource nodoPaese}"
                                       Grid.Row="1"  
                                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"  >
