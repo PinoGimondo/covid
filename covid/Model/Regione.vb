@@ -14,6 +14,32 @@ Public Class Paese
 
 End Class
 
+Public Class ListaPaesi
+    Inherits Dictionary(Of String, Paese)
+
+    Public Sub leggi(dt As DataTable)
+        'Dim r As Regione
+        'For Each dr As DataRow In dt.Rows
+        '    r = New Regione
+        '    r.leggi(dr)
+        '    Me.Add(r.codiceRegione, r)
+        'Next
+    End Sub
+
+    Public Function paesiSelezionati() As List(Of Paese)
+        Dim o As New List(Of Paese)
+        For Each p As Paese In Me.Values.Where(Function(x) x.isSelected).OrderBy(Function(x) x.denominazionePaese)
+            o.Add(p)
+        Next
+        Return o
+    End Function
+
+End Class
+
+
+
+
+
 Public Class Italia
     Inherits Paese
     Public Sub New()

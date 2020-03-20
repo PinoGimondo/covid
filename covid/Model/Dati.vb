@@ -9,15 +9,21 @@ End Enum
 Public Class Casi
     Public province As New ListaProvince
     Public regioni As New ListaRegioni
+    Public paesi As New ListaPaesi
     Public italia As New Italia
 
     Public Sub caricaDati()
         Dim da As New CovidOpenDataDataAdapter
-        Dim dt As DataTable = da.getDataset("province")
+        Dim dt As DataTable = da.getDataset("province").Tables(0)
         province.leggi(dt)
-        dt = da.getDataset("casi_italiani")
+
+        dt = da.getDataset("regioni").Tables(0)
+        regioni.leggi(dt)
+
+        Dim dsDati As DataSet = da.getDataset("casi")
+
         Dim ld As New ListaDati
-        ld.leggi(dt)
+        ld.leggi(dsDati.Tables(0))
         Dim d As Dato
         Dim prov As String = ""
         Dim p As Provincia = Nothing
@@ -32,14 +38,29 @@ Public Class Casi
             End If
         Next
 
-        dt = da.getDataset("regioni")
-        regioni.leggi(dt)
-        Dim r As Regione
+
+        ld = New ListaDati
+        ld.leggi(dsDati.Tables(1))
+        Dim reg As String = ""
+        Dim r As Regione = Nothing
+
+        For Each d In ld.OrderBy(Function(x) x.codice).OrderBy(Function(s) s.data)
+            If reg <> d.codice Then
+                reg = d.codice
+                r = regioni.Item(reg)
+            End If
+            If r IsNot Nothing Then
+                r.dati.Add(d)
+            End If
+        Next
+
         For Each p In province.Values.OrderBy(Function(x) x.denominazioneProvincia)
             r = regioni.Item(p.codiceRegione)
             r.province.Add(p)
         Next
         italia.regioni.AddRange(regioni.Values)
+
+
     End Sub
 
 End Class
@@ -50,19 +71,34 @@ Public Class Dato
     Public Property codice As String
     Public Property Label As String
     Public Property data As Date
+
     Public Property totaleCasi As Integer
     Public Property totaleCasiPer100k As Double
+
     Public Property nuoviCasi As Integer
     Public Property nuoviCasiPer100k As Double
 
+    Public Property totaleMorti As Integer
+    Public Property totaleMortiPer100k As Double
+
+    Public Property nuoviMorti As Integer
+    Public Property nuoviMortiPer100k As Double
+
     Public Sub leggi(dr As DataRow)
         data = dr("data")
-        codice = dr("codice_provincia")
-        Label = dr("denominazione_provincia")
+        codice = dr("codice")
+        Label = dr("label")
         totaleCasi = dr("totale_casi")
         totaleCasiPer100k = dr("totale_casi_x100k")
         nuoviCasi = dr("incremento_casi")
         nuoviCasiPer100k = dr("incremento_casi_x100k")
+        If dr.Table.Columns.Contains("totaleMorti") Then
+            totaleMorti = dr("totale_morti")
+            totaleMortiPer100k = dr("totale_morti_x100k")
+            nuoviMorti = dr("incremento_morti")
+            nuoviMortiPer100k = dr("incremento_morti_x100k")
+
+        End If
     End Sub
 
     Public Function getDato(tipo As tipoDatoEnum) As Double

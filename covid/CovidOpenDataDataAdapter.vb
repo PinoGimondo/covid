@@ -29,16 +29,22 @@ Public Class CovidOpenDataDataAdapter
 
     Public Sub ingestProciv()
         Dim d As Date = "24/2/2020"
+        Dim s As String
         For i As Integer = 0 To Now().Subtract(d).Days
-            Dim s As String = OpenData.getDatiGiornoProciv(d.AddDays(i))
+            s = OpenData.getDatiGiornoProcivProvince(d.AddDays(i))
             If s <> "" Then
-                ingestFile(s, "prociv")
+                ingestFile(s, "prociv_province")
+            End If
+
+            s = OpenData.getDatiGiornoProcivRegioni(d.AddDays(i))
+            If s <> "" Then
+                ingestFile(s, "prociv_regioni")
             End If
         Next
     End Sub
 
     Public Sub ingestECDC()
-        Dim nf As String = "c:\data\test\covid_world.xls"
+        Dim nf As String = "c:\data\test\covid_world.xlsx"
         Dim nfc As String = "c:\data\test\covid_world.csv"
         Dim buf() As Byte = OpenData.getDatiGiornoECDC(Now().Date)
         If buf Is Nothing Then
@@ -49,7 +55,8 @@ Public Class CovidOpenDataDataAdapter
         xlApp.DisplayAlerts = False
 
         Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook = xlApp.Workbooks.Open(nf)
-        Dim xlWorkSheet As Microsoft.Office.Interop.Excel.Worksheet = xlWorkBook.Worksheets("CSV_4_COMS")
+        Dim xlWorkSheet As Microsoft.Office.Interop.Excel.Worksheet = xlWorkBook.Worksheets.Item(1)
+
         Try
             xlWorkSheet.SaveAs(nfc, Microsoft.Office.Interop.Excel.XlFileFormat.xlCSVWindows)
         Catch ex As Exception
@@ -65,16 +72,14 @@ Public Class CovidOpenDataDataAdapter
 
     End Sub
 
-    Public Function getDataset(tipo As String) As DataTable
+    Public Function getDataset(tipo As String) As DataSet
         Dim cmd As New SqlCommand("getDataset")
         cmd.CommandType = System.Data.CommandType.StoredProcedure
         cmd.Parameters.AddWithValue("@tipo", tipo)
-        Dim dt As DataTable = Nothing
-        DB.CaricaDati(cmd, dt)
-        Return dt
+        Dim ds As New DataSet
+        DB.CaricaDati(cmd, ds)
+        Return ds
     End Function
-
-
 
 
 End Class
