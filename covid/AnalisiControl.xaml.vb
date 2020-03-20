@@ -12,11 +12,11 @@ Public Class AnalisiControl
     Private Sub AnalisiControl_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Dim oc As New ObservableCollection(Of ElementoAnalisi)
         Dim p As New Paese
-        p.codicePaese = "fr"
-        p.denominazionePaese = "Francia"
+        p.codice = "fr"
+        p.label = "Francia"
         Dim d As New Paese
-        d.codicePaese = "de"
-        d.denominazionePaese = "Germany"
+        d.codice = "de"
+        d.label = "Germany"
 
         oc.Add(C.italia)
         oc.Add(p)
@@ -34,7 +34,6 @@ Public Class AnalisiControl
         MostraSvg()
 
     End Sub
-
 
     Private Sub MostraSvg()
         If WB IsNot Nothing And G IsNot Nothing Then
@@ -67,7 +66,6 @@ Public Class AnalisiControl
             ' s = "PIPPO"
             Dim res As Object = Await jsc.execJSAsync(String.Format("pageCommand('new_svg','{0}' );", s))
         End If
-
 
     End Sub
 

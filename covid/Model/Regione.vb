@@ -1,6 +1,10 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.Data
 Public Class ElementoAnalisi
+    Public Property tipo As String
+    Public Property codice As String
+    Public Property label As String
+
     Public Property isExpanded As Boolean = True
     Public Property isSelected As Boolean
     Public Property dati As New ListaDati
@@ -9,8 +13,19 @@ End Class
 
 Public Class Paese
     Inherits ElementoAnalisi
-    Public Property codicePaese
-    Public Property denominazionePaese
+    Public Sub New()
+        tipo = "C"
+    End Sub
+    Public ReadOnly Property codicePaese
+        Get
+            Return codice
+        End Get
+    End Property
+    Public ReadOnly Property denominazionePaese
+        Get
+            Return label
+        End Get
+    End Property
 
 End Class
 
@@ -36,32 +51,38 @@ Public Class ListaPaesi
 
 End Class
 
-
-
-
-
 Public Class Italia
     Inherits Paese
     Public Sub New()
-        Me.codicePaese = "it"
-        Me.denominazionePaese = "ITALIA"
+        Me.tipo = "C"
+        Me.codice = "it"
+        Me.label = "ITALIA"
     End Sub
     Public Property regioni As New List(Of Regione)
 End Class
 
 Public Class Regione
     Inherits ElementoAnalisi
-    Public Property codiceRegione As String
-    Public Property denominazioneRegione As String
     Public Property province As New List(Of Provincia)
 
     Public Sub New()
+        tipo = "R"
         Me.isExpanded = False
     End Sub
+    Public ReadOnly Property codiceRegione
+        Get
+            Return codice
+        End Get
+    End Property
+    Public ReadOnly Property denominazioneRegione
+        Get
+            Return label
+        End Get
+    End Property
 
     Public Sub leggi(dr As DataRow)
-        codiceRegione = dr("codice_regione")
-        denominazioneRegione = dr("denominazione_regione")
+        codice = dr("codice_regione")
+        label = dr("denominazione_regione")
     End Sub
 End Class
 

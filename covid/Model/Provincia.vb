@@ -3,19 +3,32 @@ Imports System.Data
 
 Public Class Provincia
     Inherits ElementoAnalisi
-
-    Public Property codiceProvincia As String
     Public Property codiceRegione As String
     Public Property denominazioneRegione As String
     Public Property siglaProvincia As String
-    Public Property denominazioneProvincia As String
+
+    Public Sub New()
+        tipo = "P"
+    End Sub
+
+    Public ReadOnly Property codiceProvincia
+        Get
+            Return codice
+        End Get
+    End Property
+
+    Public ReadOnly Property denominazioneProvincia
+        Get
+            Return label
+        End Get
+    End Property
 
     Public Sub leggi(dr As DataRow)
-        codiceProvincia = dr("codice_provincia")
+        codice = dr("codice_provincia")
         codiceRegione = dr("codice_regione")
         denominazioneRegione = dr("denominazione_regione")
         siglaProvincia = dr("sigla_provincia")
-        denominazioneProvincia = dr("denominazione_provincia")
+        label = dr("denominazione_provincia")
     End Sub
 End Class
 

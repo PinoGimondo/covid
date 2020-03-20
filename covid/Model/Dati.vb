@@ -85,6 +85,7 @@ Public Class Dato
     Public Property nuoviMortiPer100k As Double
 
     Public Sub leggi(dr As DataRow)
+        tipo = dr("tipo")
         data = dr("data")
         codice = dr("codice")
         Label = dr("label")
@@ -92,12 +93,11 @@ Public Class Dato
         totaleCasiPer100k = dr("totale_casi_x100k")
         nuoviCasi = dr("incremento_casi")
         nuoviCasiPer100k = dr("incremento_casi_x100k")
-        If dr.Table.Columns.Contains("totaleMorti") Then
+        If dr.Table.Columns.Contains("totale_morti_x100k") Then
             totaleMorti = dr("totale_morti")
             totaleMortiPer100k = dr("totale_morti_x100k")
             nuoviMorti = dr("incremento_morti")
             nuoviMortiPer100k = dr("incremento_morti_x100k")
-
         End If
     End Sub
 
