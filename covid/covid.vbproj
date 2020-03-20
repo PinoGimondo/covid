@@ -433,6 +433,9 @@
   <ItemGroup>
     <None Include="Resources\svgScript.js" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\flags\uk.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

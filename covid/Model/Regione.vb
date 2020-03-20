@@ -18,7 +18,7 @@ Public Class Paese
     End Sub
 
     Public Sub leggi(dr As DataRow)
-        codice = dr("codice_paese")
+        codice = Trim(dr("codice_paese"))
         label = dr("denominazione_paese")
     End Sub
 

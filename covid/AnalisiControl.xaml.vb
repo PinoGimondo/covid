@@ -14,17 +14,11 @@ Public Class AnalisiControl
         InitializeComponent()
 
         Dim oc As New ObservableCollection(Of ElementoAnalisi)
-        Dim p As New Paese
-        p.codice = "fr"
-        p.label = "Francia"
-        Dim d As New Paese
-        d.codice = "de"
-        d.label = "Germany"
 
         oc.Add(C.italia)
-        oc.Add(p)
-        oc.Add(d)
-
+        For Each ea As ElementoAnalisi In C.paesi.Values.Where(Function(x) x.codicePaese <> "IT").OrderBy(Function(x) x.denominazionePaese)
+            oc.Add(ea)
+        Next
         TV.ItemsSource = oc
 
         renderTimer = New DispatcherTimer()
@@ -37,7 +31,6 @@ Public Class AnalisiControl
     End Sub
 
     Private Sub AnalisiControl_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-
         MostraSvg()
     End Sub
 
@@ -68,10 +61,12 @@ Public Class AnalisiControl
     End Sub
 
     Private Async Sub renderTimer_TickAsync(sender As Object, e As EventArgs) Handles renderTimer.Tick
+
         renderTimer.Stop()
         If jsc IsNot Nothing And G IsNot Nothing Then
             G.MaxVertical = slScalaValori.Value
             l.Clear()
+            l.AddRange(C.paesi.paesiSelezionati)
             l.AddRange(C.regioni.regioniSelezionate)
             l.AddRange(C.province.provinceSelezionate)
 

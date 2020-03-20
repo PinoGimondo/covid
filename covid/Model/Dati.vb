@@ -68,12 +68,8 @@ Public Class Casi
 
         For Each d In ld.OrderBy(Function(x) x.codice).OrderBy(Function(s) s.data)
             If pae <> d.codice Then
-                pae = d.codice
-                If paesi.ContainsKey(pae) Then
-                    pa = paesi.Item(pae)
-                Else
-                    pa = Nothing
-                End If
+                pae = Trim(d.codice)
+                pa = paesi.Item(pae)
             End If
 
             If pa IsNot Nothing Then
