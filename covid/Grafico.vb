@@ -116,7 +116,6 @@
                 dprov.Add(Svg.text("LLS S" + serie.ToString, vToX(ld.data) + 10, vToY(ld.getDato(tipoDati)), p.label.Replace("'", "\'")))
             End If
 
-
             dati.Add(dprov)
             serie += 1
         Next
