@@ -40,9 +40,11 @@ svg {
     /* Similar syntax to box-shadow */
 }
 
-.boxLegend {
+.boxLegenda {
+    stroke-width:.5;
+    stroke:gray;
     fill: white;
-    opacity: .9;
+    opacity: .93;
     box-shadow: 10px 10px 5px grey;
 }
 
