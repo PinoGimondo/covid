@@ -162,3 +162,31 @@ Public Class ListaDati
     End Sub
 
 End Class
+
+Public Enum MetodoCalcoloStimaEnum
+    Morti = 0
+    Simulazione = 1
+End Enum
+
+Public Class ListaStime
+    Inherits List(Of Stima)
+    Public dati As ListaDati
+
+    Public residenti As Integer
+    Public dataStart As Date
+    Public dataStop As Date
+    Public dataImposizioneSocialDistancing As Date
+    Public cfr As Double = 0.9
+    Public tassoPreSD As Double = 3
+    Public tassoPostSD As Double = 0.8
+
+End Class
+
+Public Class Stima
+    Inherits Dato
+
+
+
+
+End Class
+
