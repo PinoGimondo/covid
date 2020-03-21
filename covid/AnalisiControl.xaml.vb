@@ -37,7 +37,7 @@ Public Class AnalisiControl
     Private Sub MostraSvg()
         If WB IsNot Nothing And G IsNot Nothing Then
             G.MaxVertical = slScalaValori.Value
-            Dim s As String = String.Format(My.Resources.htmlpage, surl, My.Resources.svgstyle, My.Resources.svgScript, G.generaSvg(l, TipoDati.SelectedIndex, False))
+            Dim s As String = String.Format(My.Resources.htmlpage, surl, My.Resources.svgstyle, My.Resources.svgScript, G.generaSvg(l, TipoDati.SelectedIndex, False, False))
             WB.LoadHtml(s, surl)
         End If
     End Sub
@@ -70,7 +70,7 @@ Public Class AnalisiControl
             l.AddRange(C.regioni.regioniSelezionate)
             l.AddRange(C.province.provinceSelezionate)
 
-            Dim s As String = G.generaSvg(l, TipoDati.SelectedIndex, cbLabels.IsChecked).Replace(vbCr, "").Replace(vbLf, "")
+            Dim s As String = G.generaSvg(l, TipoDati.SelectedIndex, cbLabels.IsChecked, cbAutoScale.IsChecked).Replace(vbCr, "").Replace(vbLf, "")
             Dim res As Object = Await jsc.execJSAsync(String.Format("pageCommand('new_svg','{0}' );", s))
         End If
 

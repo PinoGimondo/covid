@@ -87,6 +87,7 @@
                         <ComboBoxItem>Nuovi Morti x 100K abitanti</ComboBoxItem>
                     </ComboBox>
                     <CheckBox Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbLabels" IsChecked="True" >Visualizza i valori</CheckBox>
+                    <CheckBox Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbAutoScale" IsChecked="True" >auto-scala</CheckBox>
                 </ToolBar>
                 <StackPanel Orientation="Vertical" Grid.Row="1"  >
                     <Slider Name="slScalaValori"   ValueChanged="slScalaValori_ValueChanged" Orientation="Vertical" Height="300" Minimum="10" Maximum="10000" Value="1000"></Slider>

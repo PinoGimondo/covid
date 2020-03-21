@@ -2,9 +2,9 @@
     Dim RViewPort As Rect
     Dim xDay As Double
     Dim ndays As Integer
-    Dim altMese As Integer
-    Dim altGiorno As Integer
-    Dim dataInizio As Date
+    Dim altMese As Integer = 30
+    Dim altGiorno As Integer = 20
+    Dim dataInizio As Date = "20/2/2020"
     Dim min As Double
     Public MaxVertical As Double = 2000
     Dim s0 As Double = 1000
@@ -17,21 +17,35 @@
     Public Sub New()
     End Sub
 
-    Sub init()
+    Public Function generaSvg(serieSelezionate As List(Of ElementoAnalisi), tipoDati As tipoDatoEnum, mostraValori As Boolean, autoscala As Boolean) As String
+
+        Dim automax As Integer = 0
+        If autoscala Then
+            For Each p As ElementoAnalisi In serieSelezionate
+                For Each c As Dato In p.dati
+                    automax = Math.Max(automax, c.getDato(tipoDati))
+                Next
+            Next
+            If automax = 0 Then
+                automax = MaxVertical
+            End If
+        Else
+            automax = MaxVertical
+        End If
+
+        range = automax * 1.15 - min
+
+
         RViewPort = New Rect(0, 0, 1500, 900)
         xDay = 21
         ndays = RViewPort.Width / xDay
-        altMese = 30
-        altGiorno = 20
-        dataInizio = "20/2/2020"
         min = 0
-        range = MaxVertical - min
         dy = RViewPort.Height / range
         xdSpace = (xDay - sDot) / 2
-    End Sub
 
-    Public Function generaSvg(serieSelezionate As List(Of ElementoAnalisi), tipoDati As tipoDatoEnum, mostraValori As Boolean) As String
-        init()
+
+
+
 
         Dim xd As XDocument = XDocument.Parse("<svg width=""100%"" height=""100%"" ></svg>")
         Dim sf As XElement = Svg.group("")
@@ -76,8 +90,9 @@
         End If
 
         For Each p As ElementoAnalisi In serieSelezionate
+
             dprov = Svg.group("")
-            boxLegenda.Add(generaLegenda(serie, p.label))
+            boxLegenda.Add(generaLegenda(serie, p.label.Replace("'", "\'")))
 
             Dim pp As Dato = Nothing
             For Each c As Dato In p.dati
@@ -88,12 +103,20 @@
                     pp = c
                 End If
             Next
-
+            Dim ld As Dato = Nothing
             For Each c As Dato In p.dati
+                c.Label = p.label.Replace("'", "")
+
                 If c.totaleCasi > 0 Then
                     dprov.Add(generaPunto(serie, c, tipoDati, mostraValori))
                 End If
+                ld = c
             Next
+            If ld IsNot Nothing Then
+                dprov.Add(Svg.text("LLS S" + serie.ToString, vToX(ld.data) + 10, vToY(ld.getDato(tipoDati)), p.label.Replace("'", "\'")))
+            End If
+
+
             dati.Add(dprov)
             serie += 1
         Next
