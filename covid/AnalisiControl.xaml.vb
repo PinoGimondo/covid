@@ -16,7 +16,7 @@ Public Class AnalisiControl
         Dim oc As New ObservableCollection(Of ElementoAnalisi)
 
         oc.Add(C.italia)
-        For Each ea As ElementoAnalisi In C.paesi.Values.Where(Function(x) x.codicePaese <> "IT").OrderBy(Function(x) x.denominazionePaese)
+        For Each ea As ElementoAnalisi In C.paesi.elementi.Values.Where(Function(x) x.codicePaese <> "IT").OrderBy(Function(x) x.denominazionePaese)
             oc.Add(ea)
         Next
         TV.ItemsSource = oc

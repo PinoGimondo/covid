@@ -38,13 +38,12 @@ Public Class Casi
         For Each d In ld.OrderBy(Function(x) x.codice).OrderBy(Function(s) s.data)
             If prov <> d.codice Then
                 prov = d.codice
-                p = province.Item(prov)
+                p = province.elementi.Item(prov)
             End If
             If p IsNot Nothing Then
                 p.dati.Add(d)
             End If
         Next
-
 
         ld = New ListaDati
         ld.leggi(dsDati.Tables(1))
@@ -54,7 +53,7 @@ Public Class Casi
         For Each d In ld.OrderBy(Function(x) x.codice).OrderBy(Function(s) s.data)
             If reg <> d.codice Then
                 reg = d.codice
-                r = regioni.Item(reg)
+                r = regioni.elementi.Item(reg)
             End If
             If r IsNot Nothing Then
                 r.dati.Add(d)
@@ -69,7 +68,7 @@ Public Class Casi
         For Each d In ld.OrderBy(Function(x) x.codice).OrderBy(Function(s) s.data)
             If pae <> d.codice Then
                 pae = Trim(d.codice)
-                pa = paesi.Item(pae)
+                pa = paesi.elementi.Item(pae)
             End If
 
             If pa IsNot Nothing Then
@@ -77,16 +76,23 @@ Public Class Casi
             End If
         Next
 
-        For Each p In province.Values.OrderBy(Function(x) x.denominazioneProvincia)
-            r = regioni.Item(p.codiceRegione)
+        For Each p In province.elementi.Values.OrderBy(Function(x) x.denominazioneProvincia)
+            r = regioni.elementi.Item(p.codiceRegione)
             r.province.Add(p)
         Next
-        italia.regioni.AddRange(regioni.Values)
+        italia.regioni.AddRange(regioni.elementi.Values)
 
+        elaboraStime()
 
     End Sub
 
+    Public Sub elaboraStime()
+        paesi.elaboraStime()
+        regioni.elaboraStime()
+    End Sub
+
 End Class
+
 
 
 Public Class Dato
@@ -169,7 +175,7 @@ Public Enum MetodoCalcoloStimaEnum
 End Enum
 
 Public Class ListaStime
-    Inherits List(Of Stima)
+    Inherits Dictionary(Of Date, Stima)
     Public dati As ListaDati
 
     Public residenti As Integer
@@ -180,10 +186,30 @@ Public Class ListaStime
     Public tassoPreSD As Double = 3
     Public tassoPostSD As Double = 0.8
 
+    Public Sub elabora()
+        Dim drif As Dato = dati.First
+        Me.Clear()
+        Dim days As Integer = dataStop.Subtract(dataStart).TotalDays
+        Dim d As Date
+        Dim s As Stima
+        For i As Integer = 0 To days
+            d = dataStart.AddDays(i)
+            s = New Stima(d, drif)
+            Me.Add(d, s)
+        Next
+
+    End Sub
+
 End Class
 
 Public Class Stima
     Inherits Dato
+    Public Sub New(d As Date, drif As Dato)
+        Me.tipo = drif.tipo
+        Me.codice = drif.codice
+        Me.Label = drif.Label
+        Me.data = d
+    End Sub
 
 
 
