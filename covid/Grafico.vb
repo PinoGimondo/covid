@@ -19,7 +19,7 @@
 
     Public Function generaSvg(serieSelezionate As List(Of ElementoAnalisi), tipoDati As tipoDatoEnum, mostraValori As Boolean, autoscala As Boolean) As String
 
-        Dim automax As Integer = 0
+        Dim automax As Double = 0
         If autoscala Then
             For Each p As ElementoAnalisi In serieSelezionate
                 For Each c As Dato In p.dati
@@ -33,7 +33,7 @@
             automax = MaxVertical
         End If
 
-        range = automax * 1.15 - min
+        range = CInt(automax * 1.13 - min)
 
 
         RViewPort = New Rect(0, 0, 1500, 900)

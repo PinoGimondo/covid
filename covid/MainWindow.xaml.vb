@@ -10,6 +10,7 @@ Class MainWindow
         da.ingestProciv()
         da.ingestECDC()
         da.elaboraDati()
+        Application.caricaDati()
         MsgBox("fatto")
     End Sub
 

@@ -12,11 +12,15 @@ Public Class AnalisiControl
 
     Public Sub New()
         InitializeComponent()
+    End Sub
 
+    Public Sub init()
         Dim oc As New ObservableCollection(Of ElementoAnalisi)
-
+        Dim it As ElementoAnalisi = C.paesi.elementi("IT")
+        C.italia.dati = it.dati
+        C.italia.stime = it.stime
         oc.Add(C.italia)
-        For Each ea As ElementoAnalisi In C.paesi.Values.Where(Function(x) x.codicePaese <> "IT").OrderBy(Function(x) x.denominazionePaese)
+        For Each ea As ElementoAnalisi In C.paesi.elementi.Values.Where(Function(x) x.codicePaese <> "IT").OrderBy(Function(x) x.denominazionePaese)
             oc.Add(ea)
         Next
         TV.ItemsSource = oc
@@ -27,10 +31,10 @@ Public Class AnalisiControl
         jsc = New JSConnector(Me.WB)
 
         G = New Grafico
-
     End Sub
 
     Private Sub AnalisiControl_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        init()
         MostraSvg()
     End Sub
 
@@ -66,6 +70,9 @@ Public Class AnalisiControl
         If jsc IsNot Nothing And G IsNot Nothing Then
             G.MaxVertical = slScalaValori.Value
             l.Clear()
+            If C.italia.isSelected Then
+                l.Add(C.italia)
+            End If
             l.AddRange(C.paesi.paesiSelezionati)
             l.AddRange(C.regioni.regioniSelezionate)
             l.AddRange(C.province.provinceSelezionate)

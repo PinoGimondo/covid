@@ -120,6 +120,8 @@
     <Compile Include="Grafico.vb" />
     <Compile Include="JSConnector.vb" />
     <Compile Include="Model\Dati.vb" />
+    <Compile Include="Model\ElementoAnalisi.vb" />
+    <Compile Include="Model\Paese.vb" />
     <Compile Include="Model\Provincia.vb" />
     <Compile Include="Model\Regione.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
