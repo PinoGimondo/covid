@@ -81,10 +81,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -117,22 +113,13 @@
     <Compile Include="Assets\Converters\SubjectNameFromIdConverter.vb" />
     <Compile Include="Assets\Converters\TipoContenutoImageConverter.vb" />
     <Compile Include="Assets\Converters\UtcToLocalTimeConverter.vb" />
-    <Compile Include="Grafico.vb" />
     <Compile Include="JSConnector.vb" />
-    <Compile Include="Model\Dati.vb" />
-    <Compile Include="Model\ElementoAnalisi.vb" />
-    <Compile Include="Model\Paese.vb" />
-    <Compile Include="Model\Provincia.vb" />
-    <Compile Include="Model\Regione.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="OpenData.vb" />
-    <Compile Include="CovidOpenDataDataAdapter.vb" />
     <Compile Include="StatoWindow.vb" />
-    <Compile Include="Svg.vb" />
     <Page Include="AnalisiControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -437,6 +424,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\flags\uk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\covid_lib\covid_lib.vbproj">
+      <Project>{0da417b8-6ab6-4d6a-951b-97b65ee51299}</Project>
+      <Name>covid_lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

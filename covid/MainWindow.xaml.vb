@@ -1,16 +1,13 @@
 ﻿Imports System.ComponentModel
+Imports covid_lib
 
 Class MainWindow
-    Dim da As New CovidOpenDataDataAdapter
     Public Sub New()
         InitializeComponent()
         StatoWindow.RipristinaStato(Me)
     End Sub
     Private Sub Button_Click(sender As Object, e As RoutedEventArgs)
-        da.ingestProciv()
-        da.ingestECDC()
-        da.elaboraDati()
-        Application.caricaDati()
+        Application.ingestDati()
         MsgBox("fatto")
     End Sub
 

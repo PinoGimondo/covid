@@ -2,6 +2,8 @@
 Imports System.Data
 Imports System.Windows.Threading
 Imports CefSharp
+Imports covid_lib
+
 Public Class AnalisiControl
     ReadOnly C As Casi = Application.C
     Public WithEvents jsc As JSConnector
@@ -12,6 +14,7 @@ Public Class AnalisiControl
 
     Public Sub New()
         InitializeComponent()
+        jsc = New JSConnector(Me.WB)
     End Sub
 
 
@@ -29,9 +32,6 @@ Public Class AnalisiControl
 
         renderTimer = New DispatcherTimer()
         renderTimer.Interval = New TimeSpan(0, 0, 0, 0, 200)
-
-        jsc = New JSConnector(Me.WB)
-
         G = New Grafico
     End Sub
 

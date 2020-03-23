@@ -1,4 +1,6 @@
-﻿Public Class FlagConverter
+﻿Imports covid_lib
+
+Public Class FlagConverter
 
     Implements IValueConverter
 
