@@ -14,6 +14,8 @@ Public Class AnalisiControl
         InitializeComponent()
     End Sub
 
+
+
     Public Sub init()
         Dim oc As New ObservableCollection(Of ElementoAnalisi)
         Dim it As ElementoAnalisi = C.paesi.elementi("IT")
