@@ -80,10 +80,12 @@ Public Class Casi
             r = regioni.elementi.Item(p.codiceRegione)
             r.province.Add(p)
         Next
-        italia.regioni.AddRange(regioni.elementi.Values)
+        italia.regioni.AddRange(regioni.Values)
 
-        elaboraStime()
 
+    Public Sub elaboraStime()
+        paesi.elaboraStime()
+        regioni.elaboraStime()
     End Sub
 
     Public Sub elaboraStime()
@@ -186,29 +188,13 @@ Public Class ListaStime
     Public tassoPreSD As Double = 3
     Public tassoPostSD As Double = 0.8
 
-    Public Sub elabora()
-        Dim drif As Dato = dati.First
-        Me.Clear()
-        Dim days As Integer = dataStop.Subtract(dataStart).TotalDays
-        Dim d As Date
-        Dim s As Stima
-        For i As Integer = 0 To days
-            d = dataStart.AddDays(i)
-            s = New Stima(d, drif)
-            Me.Add(d, s)
-        Next
-    End Sub
-
 End Class
 
 Public Class Stima
     Inherits Dato
-    Public Sub New(d As Date, drif As Dato)
-        Me.tipo = drif.tipo
-        Me.codice = drif.codice
-        Me.Label = drif.Label
-        Me.data = d
-    End Sub
+
+
+
 
 End Class
 

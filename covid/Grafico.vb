@@ -33,7 +33,7 @@
             automax = MaxVertical
         End If
 
-        range = CInt(automax * 1.13 - min)
+        range = automax * 1.15 - min
 
 
         RViewPort = New Rect(0, 0, 1500, 900)
