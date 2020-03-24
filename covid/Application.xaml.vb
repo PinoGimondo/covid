@@ -22,7 +22,7 @@ Class Application
 
 
     Public Shared Sub caricaDati()
-        C.caricaDati(My.Settings.connectionString)
+        C.caricaDati()
     End Sub
 
     Private Sub Application_Exit(sender As Object, e As ExitEventArgs) Handles Me.[Exit]

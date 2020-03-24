@@ -4,7 +4,7 @@
         <li class="node" id="{codice}" title="{label}">
             <div class="horizontal node-label {css()}">
                 <div><img style="margin-bottom:4px;width:24px;margin-right:4px" src="img/flags/{codice}.png" /></div>
-                <div><input type="checkbox" /></div>
+                <div><input onclick="MyPage.onCheckChanged('{tipo}' + '{codice}')" type="checkbox" /></div>
                 <div class="flex-fill" style="margin-left:.2em;">{label}</div>
             </div>
         </li>
@@ -13,7 +13,7 @@
     <ItemTemplate type="NodoEA" expanded="false" id="nodoRegioneProvincia" itemsSource="{getNodiEA()}" itemTemplateId="nodoRegioneProvincia">
         <li class="node" id="{codice}" title="{label}">
             <div class="horizontal node-label {css()}">
-                <div><input type="checkbox" /></div>
+                <div><input onclick="MyPage.onCheckChanged('{tipo}' + '{codice}')" type="checkbox" /></div>
                 <div class="flex-fill" style="margin-left:.2em;">{label}</div>
             </div>
         </li>

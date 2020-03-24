@@ -9,6 +9,10 @@ class Client {
         this.getDataAsync("api/ds", onSuccess, onError);
     }
 
+    public static getGraficoAsync(tipo: string, p:string, onSuccess: (data: string) => void, onError?: (jqXHR: JQueryXHR, textStatus: string, errorThrown: any) => void): void {
+        this.getDataAsync("api/grafico?t=" + tipo + "&p=" + p, onSuccess, onError);
+    }
+
     public static getPaesiAsync(onSuccess: (data: ListaPaesi) => void, onError?: (jqXHR: JQueryXHR, textStatus: string, errorThrown: any) => void): void {
         this.getDataAsync("api/paesi", onSuccess, onError);
     }

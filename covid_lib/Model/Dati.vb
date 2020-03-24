@@ -21,7 +21,7 @@ Public Class Casi
         da = New CovidOpenDataDataAdapter(cs)
     End Sub
 
-    Public Sub caricaDati(CS As String)
+    Public Sub caricaDati()
         Dim dt As DataTable = da.getDataset("province").Tables(0)
         province.leggi(dt)
 

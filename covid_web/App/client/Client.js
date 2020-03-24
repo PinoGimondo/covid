@@ -6,6 +6,9 @@ var Client = /** @class */ (function () {
     Client.getCovidDataSetAsync = function (onSuccess, onError) {
         this.getDataAsync("api/ds", onSuccess, onError);
     };
+    Client.getGraficoAsync = function (tipo, p, onSuccess, onError) {
+        this.getDataAsync("api/grafico?t=" + tipo + "&p=" + p, onSuccess, onError);
+    };
     Client.getPaesiAsync = function (onSuccess, onError) {
         this.getDataAsync("api/paesi", onSuccess, onError);
     };

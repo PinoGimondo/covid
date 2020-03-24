@@ -21,18 +21,32 @@ window.onload = function () {
 var MyPage = /** @class */ (function (_super) {
     __extends(MyPage, _super);
     function MyPage() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.elementiSelezionati = "";
+        return _this;
     }
     MyPage.prototype.onPageReady = function () {
         var urlParams = new URLSearchParams(window.location.search);
         //let id: string = urlParams.get('id');
         //if (!id) programmaId = "9";
-        var instance = this;
         Client.getCovidDataSetAsync(function (cds) {
             ds = cds;
             ds.paesi[0].isSelected = true;
             ds.paesi[0].isExpanded = false;
             P.tv.reRender(ds.paesi);
+        });
+    };
+    MyPage.onCheckChanged = function (id) {
+        var e = event.target;
+        if (e.checked) {
+            P.elementiSelezionati += "," + id;
+        }
+        else {
+            P.elementiSelezionati = P.elementiSelezionati.replace("," + id, "");
+        }
+        console.log("occ: " + P.elementiSelezionati);
+        Client.getGraficoAsync('', P.elementiSelezionati, function (svg) {
+            $("#boxViewData").html(svg);
         });
     };
     return MyPage;

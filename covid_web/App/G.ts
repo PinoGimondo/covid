@@ -11,20 +11,34 @@ class MyPage extends Page {
     protected as: Component;
     protected tv: TVEA;
     protected pup: PopUp;
-
-    public elementoSelezionato: ElementoAnalisi;
+    public elementiSelezionati:string="";
 
     protected onPageReady(): void {
-        var urlParams = new URLSearchParams(window.location.search);
+        let urlParams = new URLSearchParams(window.location.search);
         //let id: string = urlParams.get('id');
         //if (!id) programmaId = "9";
-        let instance: MyPage = this;
         Client.getCovidDataSetAsync(function (cds: CovidDataSet) {
             ds = cds;
             ds.paesi[0].isSelected = true;
             ds.paesi[0].isExpanded=false;
             P.tv.reRender(ds.paesi);
         });
+    }
+
+    public static onCheckChanged(id: string) {
+        let e: HTMLInputElement = <HTMLInputElement>event.target;
+        if (e.checked) {
+            P.elementiSelezionati += "," + id;
+        } else {
+            P.elementiSelezionati = P.elementiSelezionati.replace("," + id, "");
+        }
+        console.log("occ: " + P.elementiSelezionati);
+
+        Client.getGraficoAsync('', P.elementiSelezionati, function (svg: string) {
+            $("#boxViewData").html(svg);
+        });
+
+
     }
 }
 
@@ -59,7 +73,7 @@ Page.registerClass(NodoEA);
 class TVEA extends TreeView {
    public getPaesi(dc:any): ListaPaesi {
         return ds.paesi;
-   }
+    }
 }
 Page.registerClass(TVEA);
 
