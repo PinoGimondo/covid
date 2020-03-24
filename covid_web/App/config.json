@@ -1,0 +1,6 @@
+﻿{
+  "resources": [
+    { "url": "app/lib/lib.html" },
+    { "url": "app/res/ElementiAnalisi.html" }
+  ]
+}

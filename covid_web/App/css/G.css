@@ -1,0 +1,205 @@
+﻿.body {
+    box-sizing: border-box;
+}
+
+div {
+    padding: 0px;
+    margin: 0px;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    max-height: 100vh;
+    max-width: 100vw;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+#titoloTV {
+    display: flex;
+    padding-left:.5em;
+    height: 30px;
+    background-color: black;
+    color:azure;
+    font-size:18px;
+}
+
+.testo_btn_statoArgomento {
+    margin: 1em;
+}
+
+.btn_statoArgomento {
+    cursor: pointer;
+    margin: .1em;
+    width: 200px;
+    border-bottom: solid 1px #F0F0F0;
+}
+
+.btn_statoArgomento:hover {
+    background-color: lightyellow;
+}
+
+.argomento-non-previsto {
+    color: lightgray;
+}
+.argomento-da-studiare {
+    font-weight: bold;
+}
+
+
+
+#tvProgramma {
+    display: flex;
+    overflow-y: scroll;
+    height:84vh;
+}
+
+.node {
+    cursor: pointer;
+}
+
+#c2 {
+    display: flex;
+    flex-direction:column;
+    width: 340px;
+    background-color: lavender;
+}
+
+#boxArgomento {
+    width: 100%;
+    height: 60px;
+    background-color: whitesmoke;
+    border: solid 1px lightgray;
+    color: black;
+    font-size: 16px;
+}
+
+.edit-control {
+    padding:4px;
+    border:1px solid gray;
+    margin:4px;
+    font-size:x-large;
+}
+
+.lbPillole {
+    margin: 2px;
+    width: 100%;
+    list-style: none;
+    list-style-type: none;
+    padding: -20px;
+}
+
+.itemPillola {
+    padding:.1em;
+    cursor: pointer;
+    margin: 2px;
+    min-height: 60px;
+    min-width:360px;
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    width:100%;
+}
+
+.itemPillola:hover {
+        background-color: white;
+        border: 1px solid lightgray;
+    }
+
+.tag-pillola-false, .tag-pillola-False {
+    background-color: whitesmoke;
+}
+
+.tag-pillola-true, .tag-pillola-True {
+    background-color: orange;
+}
+
+.importante-true {
+    color: blueviolet
+}
+
+.pillola-arrows {
+    margin: .2em;
+    font-size: large;
+    color: white;
+}
+
+.pillola-arrow:hover {
+    color: red;
+}
+
+.pillola-arrows:hover {
+    color: lightgray;
+}
+
+
+.pillola-importante:hover {
+    color: red;
+}
+
+.importante-false {
+    color: white
+}
+
+.pillola-importante {
+    margin: .1em;
+    margin-top: 8px;
+    font-size: x-large;
+}
+.pillola-importante:hover {
+    color: red;
+}
+
+.pillola-utente-true {
+    background-color:#f3e9de  ;
+}
+
+.pillola-utente-false {
+    background-color: #e1f8f8 ;
+}
+
+.pillola-selezione-selezionata {
+    background-color: red;
+}
+
+
+
+#footer {
+    display: flex;
+    background-color: lavender;
+    height: 32px;
+}
+
+#ajax-loader {
+    width: 24px;
+    height: 24px;
+}
+
+#ajax-message {
+    font-size: x-small;
+    color: navy;
+}
+
+/* editor's general field */
+.jqte {
+    flex-grow: 100;
+    margin: 6px 0;
+    border: #000 1px solid;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    box-shadow: 0 0 3px #999;
+    -webkit-box-shadow: 0 0 3px #999;
+    -moz-box-shadow: 0 0 3px #999;
+    overflow: scroll;
+    transition: box-shadow 0.4s, border 0.4s;
+    -webkit-transition: -webkit-box-shadow 0.4s, border 0.4s;
+    -moz-transition: -moz-box-shadow 0.4s, border 0.4s;
+    -o-transition: -o-box-shadow 0.4s, border 0.4s;
+}
+.jqte * {
+    font-size: x-large;
+    font-family: Garamond;
+}

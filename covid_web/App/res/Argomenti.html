@@ -1,0 +1,48 @@
+﻿ <resources>
+
+    <ItemTemplate type="NodoArgomento" expanded="{expanded}" id="nodoSezione" itemsSource="{getArgomenti()}" itemTemplateId="nodoArgomento">
+        <li class="node" id="{argomentoId}">
+            <div class="node-label nodo-sezione">{argomento}</div>
+        </li>
+    </ItemTemplate>
+
+    <ItemTemplate type="NodoArgomento" expanded="true" id="nodoArgomento" itemsSource="{getArgomenti()}" itemTemplateId="nodoArgomento">
+            <li class="node" id="{argomentoId}" title="{statoArgomento}">
+                <div class="horizontal node-label {css()}">
+                    <div><img style="margin-bottom:4px;width:8px;height:80%;" src="img/sa-{statoArgomentoId}.png" /></div>
+                    <div class="flex-fill" style="margin-left:.2em;">{argomento}</div>
+                </div>
+            </li>
+    </ItemTemplate>
+
+    <ItemTemplate type="TVArgomenti" id="tvArgomenti" dataContest="{pippo()}" itemsSource="{getSezioni()}" itemTemplateId="nodoSezione">
+        <ul class="treeview"></ul>
+    </ItemTemplate>
+
+    <ItemTemplate type="Component" id="argomentoSelezionato">
+        <div class="horizontal argomento-header">
+            <div><img src="img/sa-{statoArgomentoId}.png" style="width:16px;height:50px" /></div>
+            <div class="vertical" style="flex-grow:100; margin-left:.3em;">
+                <div style="font-size:x-small">Argomento {statoArgomento}</div>
+                <div>{argomento}</div>
+            </div>
+        </div>
+    </ItemTemplate>
+
+    <ItemTemplate type="PopUp" width="600" height="600" id="pupMenuArgomento">
+        <div>
+            <div class="flex-column" style="margin:10px;">
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','2');"><img src="img/sa-2.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">spiegato</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','4');"><img src="img/sa-4.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">studiato</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','3');"><img src="img/sa-3.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">da studiare</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','5');"><img src="img/sa-5.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">da ripassare</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','6');"><img src="img/sa-6.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">da ripassare bene</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','1');"><img src="img/sa-1.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">previsto</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','0');"><img src="img/sa-0.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">non previsto</span></div>
+            </div>
+        </div>
+    </ItemTemplate>
+
+
+
+</resources>

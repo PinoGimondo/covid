@@ -1,0 +1,32 @@
+﻿<resources>
+
+    <ItemTemplate type="NodoEA" expanded="{expanded}" id="nodoEA" itemsSource="{getNodiEA()}" itemTemplateId="nodoEA">
+        <li class="node" id="{codice}" title="{label}">
+            <div class="horizontal node-label {css()}">
+                <div><img style="margin-bottom:4px;width:32px;" src="img/flags/{codice}.png" /></div>
+                <div class="flex-fill" style="margin-left:.2em;">{label}</div>
+            </div>
+        </li>
+    </ItemTemplate>
+
+    <ItemTemplate type="TVEA" id="tvEA" dataContest="{pippo()}" itemsSource="{getPaesi()}" itemTemplateId="nodoEA">
+        <ul class="treeview"></ul>
+    </ItemTemplate>
+
+    <ItemTemplate type="PopUp" width="600" height="600" id="pupMenuArgomento">
+        <div>
+            <div class="flex-column" style="margin:10px;">
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','2');"><img src="img/sa-2.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">spiegato</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','4');"><img src="img/sa-4.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">studiato</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','3');"><img src="img/sa-3.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">da studiare</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','5');"><img src="img/sa-5.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">da ripassare</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','6');"><img src="img/sa-6.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">da ripassare bene</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','1');"><img src="img/sa-1.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">previsto</span></div>
+                <div class="btn_statoArgomento" onclick="MyPage.button('set_stato_argomento','0');"><img src="img/sa-0.png" style="width:10px;height:100%" /><span class="testo_btn_statoArgomento">non previsto</span></div>
+            </div>
+        </div>
+    </ItemTemplate>
+
+
+
+</resources>

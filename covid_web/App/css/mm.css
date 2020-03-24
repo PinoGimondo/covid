@@ -1,0 +1,80 @@
+﻿svg {
+    border: solid 1px gray;
+    background-color: ghostwhite;
+    width: 800px;
+    height: 1200px;
+    background-image: url('../../img/arab-01.png');
+    background-size: 70%;
+}
+
+.mm-text-liv-0 {
+    fill: black;
+    stroke: black;
+    font-size: 16px;
+}
+.mm-text-liv-1 {
+    fill: black;
+    stroke: black;
+    font-size: 14px;
+}
+.mm-text-liv-2, .mm-text-liv-3, .mm-text-liv-4 {
+    fill: black;
+    stroke: black;
+    font-size: 12px;
+}
+
+.mm-node-text {
+    margin:0px;
+    padding:2px;
+    text-align:center;
+    vertical-align:middle;
+    cursor: pointer;
+    text-anchor: middle;
+    font-family: Verdana;
+}
+
+.mm-liv-0 {
+    fill: white;
+}
+
+.mm-liv-1 {
+    fill: #FFF0F0;
+}
+
+.mm-liv-2, .mm-liv-3, .mm-liv-4 {
+    fill: #F0F0FF;
+}
+
+.mm-grab {
+    stroke: black;
+    stroke-width: 2;
+}
+
+.mm-selected {
+    fill: yellow;
+}
+
+.mm-node-shade {
+    fill: black;
+    opacity: .05;
+}
+
+.mm-node {
+    cursor:pointer;
+    stroke: lightgray;
+    stroke-width: 1;
+    opacity: 1;
+}
+
+.mm-link {
+    stroke-width: 4;
+    opacity: 0.5;
+}
+
+.mm-link-liv-1 {
+    stroke: black;
+}
+
+.mm-link-liv-2, .mm-link-liv-3, .mm-link-liv-4 {
+    stroke: brown;
+}

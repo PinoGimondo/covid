@@ -1,0 +1,1 @@
+FOR /f "delims=" %%F IN ('DIR /a-d /b *.png')  DO (RENAME "%%F" "flag_%%F")
