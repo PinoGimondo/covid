@@ -3,6 +3,9 @@ var C;
 var Client = /** @class */ (function () {
     function Client() {
     }
+    Client.getCovidDataSetAsync = function (onSuccess, onError) {
+        this.getDataAsync("api/ds", onSuccess, onError);
+    };
     Client.getPaesiAsync = function (onSuccess, onError) {
         this.getDataAsync("api/paesi", onSuccess, onError);
     };

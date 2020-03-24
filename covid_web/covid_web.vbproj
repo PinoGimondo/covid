@@ -125,6 +125,7 @@
     <Content Include="App\img\compressed.png" />
     <Content Include="App\img\exp.png" />
     <Content Include="App\img\expanded.png" />
+    <Content Include="Content\svgstyle.css" />
     <Content Include="img\flags\ad.png" />
     <Content Include="img\flags\ae.png" />
     <Content Include="img\flags\af.png" />
@@ -336,10 +337,7 @@
     <Content Include="App\lib\lib.js" />
     <Content Include="App\lib\sp.js" />
     <Content Include="App\mm.js" />
-    <Content Include="App\res\Argomenti.html" />
     <Content Include="App\res\ElementiAnalisi.html" />
-    <Content Include="App\res\liste.html" />
-    <Content Include="App\res\Pillole.html" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -544,6 +542,7 @@
     <Content Include="Scripts\src\utils\setAttributes.js" />
     <Content Include="Scripts\src\utils\setStyles.js" />
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\svgScript.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />

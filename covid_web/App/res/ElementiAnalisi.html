@@ -1,15 +1,25 @@
 ﻿<resources>
 
-    <ItemTemplate type="NodoEA" expanded="{expanded}" id="nodoEA" itemsSource="{getNodiEA()}" itemTemplateId="nodoEA">
+    <ItemTemplate type="NodoEA" expanded="{isExpanded}" id="nodoPaese" itemsSource="{getNodiEA()}" itemTemplateId="nodoRegioneProvincia">
         <li class="node" id="{codice}" title="{label}">
             <div class="horizontal node-label {css()}">
-                <div><img style="margin-bottom:4px;width:32px;" src="img/flags/{codice}.png" /></div>
+                <div><img style="margin-bottom:4px;width:24px;margin-right:4px" src="img/flags/{codice}.png" /></div>
+                <div><input type="checkbox" /></div>
                 <div class="flex-fill" style="margin-left:.2em;">{label}</div>
             </div>
         </li>
     </ItemTemplate>
 
-    <ItemTemplate type="TVEA" id="tvEA" dataContest="{pippo()}" itemsSource="{getPaesi()}" itemTemplateId="nodoEA">
+    <ItemTemplate type="NodoEA" expanded="{isExpanded}" id="nodoRegioneProvincia" itemsSource="{getNodiEA()}" itemTemplateId="nodoRegioneProvincia">
+        <li class="node" id="{codice}" title="{label}">
+            <div class="horizontal node-label {css()}">
+                <div><input type="checkbox" /></div>
+                <div class="flex-fill" style="margin-left:.2em;">{label}</div>
+            </div>
+        </li>
+    </ItemTemplate>
+
+    <ItemTemplate type="TVEA" id="tvEA" dataContest="" itemsSource="{getPaesi()}" itemTemplateId="nodoPaese">
         <ul class="treeview"></ul>
     </ItemTemplate>
 
@@ -26,7 +36,4 @@
             </div>
         </div>
     </ItemTemplate>
-
-
-
 </resources>

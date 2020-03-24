@@ -1,4 +1,9 @@
-﻿class Dato {
+﻿class CovidDataSet {
+    public paesi: ListaPaesi;
+    public regioni: ListaRegioni;
+}
+
+class Dato {
     public tipo: string;
     public codice: string;
     public label: string;
@@ -10,6 +15,8 @@ class ElementoAnalisi {
     public codice: string;
     public label: string;
     public dati: Array<Dato>
+    public isSelected: boolean;
+    public isExpanded: boolean;
     constructor() {}
 }
 
@@ -27,7 +34,23 @@ class Paese extends ElementoAnalisi {
 }
 
 class ListaPaesi extends Array<Paese> {
+}
 
+
+class Regione extends ElementoAnalisi {
+    constructor() {
+        super();
+        this.tipo = "R"
+    }
+    public get codice_regione(): string {
+        return this.codice;
+    }
+    public get denominazione_regione(): string {
+        return this.label;
+    }
+}
+
+class ListaRegioni extends Array<Regione> {
 }
 
 interface OggettoPillola {

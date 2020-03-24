@@ -9,22 +9,8 @@
 <h1>API TEST</h1>
 <br />
 <hr />
-<p>test for: api/paesi</p>
-<iframe src="/api/paesi" style="height:100px;width:100%"></iframe>
+<p>test for: api/ds</p>
+<iframe src="/api/ds" style="height:400px;width:100%"></iframe>
 <br />
-
-<%--<hr />
-<p>test for: api/pillola?token=&pillolaId=1000000000</p>
-<iframe src="~/api/pillola?token=&pillolaId=1000000000" style="height:200px;width:100%"></iframe>
-<br />
-<hr />
-<p>test for: api/programma_studente?token=&programmaId=9</p>
-<iframe src="~/api/programma_studente?token=&programmaId=9" style="height:200px;width:100%"></iframe>
-<br />
-<hr />
-<p>test for: api/argomento_studente?token=&argomentoId=1</p>
-<iframe src="~/api/argomento_studente?token=&argomentoId=1" style="height:200px;width:100%"></iframe>
-<br />
-<hr />--%>
 </body>
 </html>

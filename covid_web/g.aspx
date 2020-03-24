@@ -11,10 +11,10 @@
     <link href="content/bootstrap.min.css" rel="stylesheet" />
      <link href="Content/font-awesome.css" rel="stylesheet" />
      <link href="Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-     <link href="plugins/jquery-te/jquery-te-1.4.0.css" rel="stylesheet" />
      <link href="content/site.css" rel="stylesheet" />
      <link href="app/css/lib.css" rel="stylesheet" />
      <link href="app/css/g.css" rel="stylesheet" />
+    <link href="Content/svgstyle.css" rel="stylesheet" />
     <title>Programma</title>
   </head>
   <body>
@@ -32,8 +32,8 @@
                         <div class="navbar-collapse collapse" id="navbarSupportedContent">
 
                             <ul class="nav navbar-nav mr-auto">
-                                <li> <a Class="nav-link" title="API BIT" href="test/apitest.aspx">API BIT</a></li>
-                                <li> <a Class="nav-link" title="test" href="g?id=9">Filosofia</a></li>
+                                <li> <a class="nav-link" title="API BIT" href="test/apitest.aspx">API BIT</a></li>
+                                <li> <a class="nav-link" title="test" href="g?id=9">Filosofia</a></li>
                             </ul>
                         </div>
                     </div>
@@ -43,10 +43,13 @@
            <div class="horizontal v-fill" >
                <div class="vertical" style="min-width:300px;" >
                     <div id="titoloTV">Paesi</div>
-                    <div id="tvProgramma" class="v-fill"><TVArgomenti name="tv" id="TVP" templateId="tvArgomenti"></TVArgomenti></div>
+                    <div id="tvEA" class="v-fill">
+                        <TVEA name="tv" id="TVP" templateId="tvEA"></TVEA>
+                    </div>
                 </div>
                 
-               <div id="boxViewPillola" class="vertical h-fill " style="background-color:red" >
+               <div id="boxViewData" class="vertical h-fill " style="background-color:red" >
+                   <%=svg %>
                </div>
            </div>
 
@@ -70,6 +73,7 @@
       <script src="App/client/models.js"></script>
       <script src="App/client/client.js"></script>
       <script src="app/g.js"></script>
+      <script src="Scripts/svgScript.js"></script>
 
       <PopUp templateId="pupMenuArgomento" name="pup" id="pup" ></PopUp>
   </body>

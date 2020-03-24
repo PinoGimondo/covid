@@ -49,7 +49,7 @@ Public Class Grafico
 
 
 
-        Dim xd As XDocument = XDocument.Parse("<svg width=""100%"" height=""100%"" ></svg>")
+        Dim xd As XDocument = XDocument.Parse("<svg viewBox=""0 0 1500 900"" width=""100%"" height=""100%"" ></svg>")
         Dim sf As XElement = Svg.group("")
         sf.Add(Svg.rect("sfondo", RViewPort))
         sf.Add(Svg.linea("rigaMese", RViewPort.Left, RViewPort.Top + altMese, RViewPort.Right, RViewPort.Top + altMese))

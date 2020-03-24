@@ -11,6 +11,11 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var CovidDataSet = /** @class */ (function () {
+    function CovidDataSet() {
+    }
+    return CovidDataSet;
+}());
 var Dato = /** @class */ (function () {
     function Dato() {
     }
@@ -50,6 +55,36 @@ var ListaPaesi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return ListaPaesi;
+}(Array));
+var Regione = /** @class */ (function (_super) {
+    __extends(Regione, _super);
+    function Regione() {
+        var _this = _super.call(this) || this;
+        _this.tipo = "R";
+        return _this;
+    }
+    Object.defineProperty(Regione.prototype, "codice_regione", {
+        get: function () {
+            return this.codice;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Regione.prototype, "denominazione_regione", {
+        get: function () {
+            return this.label;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Regione;
+}(ElementoAnalisi));
+var ListaRegioni = /** @class */ (function (_super) {
+    __extends(ListaRegioni, _super);
+    function ListaRegioni() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return ListaRegioni;
 }(Array));
 var ProgrammaStudente = /** @class */ (function () {
     function ProgrammaStudente() {

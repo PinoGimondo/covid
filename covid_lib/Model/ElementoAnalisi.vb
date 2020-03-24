@@ -11,3 +11,19 @@ Public Class ElementoAnalisi
     Public Property stime As New ListaStime
 
 End Class
+
+Public Class CovidDataSet
+    Public Property paesi As New List(Of Paese)
+    Public Property regioni As New List(Of Regione)
+
+    Public Sub leggi(ds As DataSet)
+        Dim lp As New ListaPaesi
+        lp.leggi(ds.Tables(0))
+        paesi.Add(lp.elementi("IT"))
+        paesi.AddRange(lp.elementi.Values.Where(Function(x) x.codice <> "IT"))
+        Dim lr As New ListaRegioni
+        lr.leggi(ds.Tables(1))
+        regioni.AddRange(lr.elementi.Values)
+    End Sub
+
+End Class

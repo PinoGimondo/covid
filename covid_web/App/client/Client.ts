@@ -5,6 +5,10 @@ class Client {
 //    protected static host: string = "http://www.pardesca.it:4080/pillole/";
     protected static host: string = "";
 
+    public static getCovidDataSetAsync(onSuccess: (data: CovidDataSet) => void, onError?: (jqXHR: JQueryXHR, textStatus: string, errorThrown: any) => void): void {
+        this.getDataAsync("api/ds", onSuccess, onError);
+    }
+
     public static getPaesiAsync(onSuccess: (data: ListaPaesi) => void, onError?: (jqXHR: JQueryXHR, textStatus: string, errorThrown: any) => void): void {
         this.getDataAsync("api/paesi", onSuccess, onError);
     }
