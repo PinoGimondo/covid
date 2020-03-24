@@ -15,6 +15,7 @@ End Class
 Public Class CovidDataSet
     Public Property paesi As New List(Of Paese)
     Public Property regioni As New List(Of Regione)
+    Public Property province As New List(Of Provincia)
 
     Public Sub leggi(ds As DataSet)
         Dim lp As New ListaPaesi
@@ -24,6 +25,10 @@ Public Class CovidDataSet
         Dim lr As New ListaRegioni
         lr.leggi(ds.Tables(1))
         regioni.AddRange(lr.elementi.Values)
+        Dim lpr As New ListaProvince
+        lpr.leggi(ds.Tables(2))
+        province.AddRange(lpr.elementi.Values)
+
     End Sub
 
 End Class

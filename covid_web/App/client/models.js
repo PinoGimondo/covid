@@ -33,14 +33,14 @@ var Paese = /** @class */ (function (_super) {
         _this.tipo = "C";
         return _this;
     }
-    Object.defineProperty(Paese.prototype, "codice_paese", {
+    Object.defineProperty(Paese.prototype, "codicePaese", {
         get: function () {
             return this.codice;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Paese.prototype, "denominazione_paese", {
+    Object.defineProperty(Paese.prototype, "denominazionePaese", {
         get: function () {
             return this.label;
         },
@@ -63,14 +63,14 @@ var Regione = /** @class */ (function (_super) {
         _this.tipo = "R";
         return _this;
     }
-    Object.defineProperty(Regione.prototype, "codice_regione", {
+    Object.defineProperty(Regione.prototype, "codiceRegione", {
         get: function () {
             return this.codice;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Regione.prototype, "denominazione_regione", {
+    Object.defineProperty(Regione.prototype, "denominazioneRegione", {
         get: function () {
             return this.label;
         },
@@ -85,6 +85,36 @@ var ListaRegioni = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return ListaRegioni;
+}(Array));
+var Provincia = /** @class */ (function (_super) {
+    __extends(Provincia, _super);
+    function Provincia() {
+        var _this = _super.call(this) || this;
+        _this.tipo = "P";
+        return _this;
+    }
+    Object.defineProperty(Provincia.prototype, "codiceProvincia", {
+        get: function () {
+            return this.codice;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Provincia.prototype, "denominazioneProvincia", {
+        get: function () {
+            return this.label;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Provincia;
+}(ElementoAnalisi));
+var ListaProvince = /** @class */ (function (_super) {
+    __extends(ListaProvince, _super);
+    function ListaProvince() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return ListaProvince;
 }(Array));
 var ProgrammaStudente = /** @class */ (function () {
     function ProgrammaStudente() {

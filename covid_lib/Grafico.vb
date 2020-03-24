@@ -45,10 +45,6 @@ Public Class Grafico
         dy = RViewPort.Height / range
         xdSpace = (xDay - sDot) / 2
 
-
-
-
-
         Dim xd As XDocument = XDocument.Parse("<svg viewBox=""0 0 1500 900"" width=""100%"" height=""100%"" ></svg>")
         Dim sf As XElement = Svg.group("")
         sf.Add(Svg.rect("sfondo", RViewPort))

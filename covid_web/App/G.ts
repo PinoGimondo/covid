@@ -37,9 +37,20 @@ class NodoEA extends TreeViewNode {
     
     public getNodiEA(dc: ElementoAnalisi ): Array<ElementoAnalisi> {
         let r: Array<ElementoAnalisi> = new Array<ElementoAnalisi>();
-        if (dc.codice === "IT") {
-            r= ds.regioni;
+        switch (dc.tipo) {
+            case 'C':
+                if (dc.codice === "IT") {
+                    r = ds.regioni;
+                }
+                break;
+            case 'R':
+                ds.province.forEach( function(p: Provincia) {
+                    if (p.codiceRegione === dc.codice) {
+                        r.push(p);
+                    }
+                })
         }
+
         return r;
     }
 }

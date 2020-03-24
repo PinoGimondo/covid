@@ -1,6 +1,8 @@
 ﻿class CovidDataSet {
     public paesi: ListaPaesi;
     public regioni: ListaRegioni;
+    public province: ListaProvince;
+
 }
 
 class Dato {
@@ -25,10 +27,10 @@ class Paese extends ElementoAnalisi {
         super();
         this.tipo="C"
     }
-    public get codice_paese(): string {
+    public get codicePaese(): string {
         return this.codice;
     }
-    public get denominazione_paese(): string {
+    public get denominazionePaese(): string {
         return this.label;
     }
 }
@@ -42,16 +44,36 @@ class Regione extends ElementoAnalisi {
         super();
         this.tipo = "R"
     }
-    public get codice_regione(): string {
+    public get codiceRegione(): string {
         return this.codice;
     }
-    public get denominazione_regione(): string {
+    public get denominazioneRegione(): string {
         return this.label;
     }
 }
 
 class ListaRegioni extends Array<Regione> {
 }
+
+class Provincia extends ElementoAnalisi {
+    public codiceRegione: string;
+
+    constructor() {
+        super();
+        this.tipo = "P"
+    }
+    public get codiceProvincia(): string {
+        return this.codice;
+    }
+    public get denominazioneProvincia(): string {
+        return this.label;
+    }
+}
+
+class ListaProvince extends Array<Provincia> {
+}
+
+
 
 interface OggettoPillola {
     instanceId: string;
