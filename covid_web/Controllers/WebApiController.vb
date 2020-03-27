@@ -53,9 +53,7 @@ Namespace Controllers
                             End If
                         End If
                     Next
-
                 End If
-
 
                 Dim G = New Grafico
                 Return G.generaSvg(lea, 0, True, True)

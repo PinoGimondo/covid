@@ -52,6 +52,15 @@ Class Svg
         Return e
 
     End Function
+    Public Shared Function use(cssClass As String, id As String, x As Double, y As Double) As XElement
+        Dim e As XElement = New XElement("use")
+        e.Add(New XAttribute("class", cssClass))
+        e.Add(New XAttribute("href", "#" & id.Replace("#", "")))
+        e.Add(New XAttribute("x", str(x)))
+        e.Add(New XAttribute("y", str(y)))
+        Return e
+    End Function
+
 
     Public Shared Function text(cssClass As String, x As Double, y As Double, testo As String) As XElement
         Dim e As XElement = New XElement("text")
@@ -68,6 +77,16 @@ Class Svg
         If content IsNot Nothing Then
             e.Add(content)
         End If
+        Return e
+    End Function
+
+    Public Shared Function path(id As String, d As String, Optional scala As Double = 1) As XElement
+        Dim e As XElement = New XElement("path")
+        If id <> "" Then
+            e.Add(New XAttribute("id", id))
+        End If
+        e.Add(New XAttribute("d", d))
+        e.Add(New XAttribute("transform", String.Format("scale({0})", scala.ToString().Replace(",", "."))))
         Return e
     End Function
 

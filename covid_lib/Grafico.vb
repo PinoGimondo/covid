@@ -46,6 +46,12 @@ Public Class Grafico
         xdSpace = (xDay - sDot) / 2
 
         Dim xd As XDocument = XDocument.Parse("<svg viewBox=""0 0 1500 900"" width=""100%"" height=""100%"" ></svg>")
+        Dim defs As XElement = New XElement("defs")
+        defs.Add(Svg.path("SS0", "M -4 -4 H4 V4 H-4 Z L 0 0"))
+        defs.Add(Svg.path("SS1", "M 0 -5 l 4 6.4 h-8 Z L 0 0"))
+        xd.Root.Add(defs)
+
+
         Dim sf As XElement = Svg.group("")
         sf.Add(Svg.rect("sfondo", RViewPort))
         sf.Add(Svg.linea("rigaMese", RViewPort.Left, RViewPort.Top + altMese, RViewPort.Right, RViewPort.Top + altMese))
@@ -124,7 +130,7 @@ Public Class Grafico
 
     Protected Function generaLegenda(serie As Integer, label As String) As XElement
         Dim e As XElement = Svg.group("")
-        e.Add(Svg.text("S S" & serie.ToString, 10, (serie + 1) * distLegenda, "\uf055"))
+        e.Add(Svg.use("S S" & serie.ToString, "SS0", 10, (serie + 1) * distLegenda))
         e.Add(Svg.text("LL S" & serie.ToString, 10 + xDay, (serie + 1) * distLegenda, label))
         Return e
     End Function
@@ -139,7 +145,8 @@ Public Class Grafico
         Dim x As Double = vToX(d.data)
         Dim y As Double = vToY(d.getDato(tipoDato))
         Dim v As String = Math.Round(d.getDato(tipoDato)).ToString
-        Dim e As XElement = Svg.text("S S" & serie.ToString, x, y, "\uf055")
+        Dim e As XElement = Svg.use("S S" & serie.ToString, "SS0", x, y)
+
         e.Add(New XElement("title", String.Format("{0}|{1}|{2}", d.data.ToString("dd/MM/yyyy"), d.Label, v)))
         g.Add(e)
         If visualizzaValore Then

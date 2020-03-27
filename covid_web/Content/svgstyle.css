@@ -86,13 +86,8 @@ svg {
 }
 
 .S {
-    font-family: FontAwesome;
-    font-size: 14px;
-    text-anchor: middle;
-    dominant-baseline: middle;
-    cursor: pointer;
-    background-color: transparent;
     opacity: .6;
+    fill:transparent;
 }
 
 .S0 {
