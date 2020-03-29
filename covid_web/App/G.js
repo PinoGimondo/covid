@@ -45,7 +45,11 @@ var MyPage = /** @class */ (function (_super) {
             P.elementiSelezionati = P.elementiSelezionati.replace("," + id, "");
         }
         console.log("occ: " + P.elementiSelezionati);
-        Client.getGraficoAsync('', P.elementiSelezionati, function (svg) {
+        MyPage.redrawGraphic();
+    };
+    MyPage.redrawGraphic = function () {
+        var e = document.getElementById("selTipoSerie");
+        Client.getGraficoAsync(e.value, P.elementiSelezionati, function (svg) {
             $("#boxViewData").html(svg);
         });
     };

@@ -33,13 +33,16 @@ class MyPage extends Page {
             P.elementiSelezionati = P.elementiSelezionati.replace("," + id, "");
         }
         console.log("occ: " + P.elementiSelezionati);
+        MyPage.redrawGraphic();
+    }
 
-        Client.getGraficoAsync('', P.elementiSelezionati, function (svg: string) {
+    public static redrawGraphic() {
+        const e: HTMLSelectElement=<HTMLSelectElement>document.getElementById("selTipoSerie");
+        Client.getGraficoAsync(e.value, P.elementiSelezionati, function (svg: string) {
             $("#boxViewData").html(svg);
         });
-
-
     }
+
 }
 
 class NodoEA extends TreeViewNode {

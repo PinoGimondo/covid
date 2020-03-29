@@ -47,10 +47,24 @@
                         <TVEA name="tv" id="TVP" templateId="tvEA"></TVEA>
                     </div>
                 </div>
-                
-               <div id="boxViewData" class="vertical h-fill " style="background-color:red" >
-                   <%=svg %>
-               </div>
+               <div id="boxViewDataContainer" class="vertical h-fill" style="background-color:lightgray" >
+                   <div id="ViewtoolBox" class="horizontal" style="height:32px;background-color:lightgray; padding:3px" >
+                       tipo: 
+                       <select onchange="MyPage.redrawGraphic();" style="width:200px; margin:2px" id="selTipoSerie">
+                           <option value="0">Casi attivi</option>
+                           <option selected="" value="1">Casi attivi x 100k abitanti</option>
+                           <option value="2">Nuovi casi</option>
+                           <option value="3">Nuovi Casi x 100k abitanti</option>
+                           <option value="4">Morti</option>
+                           <option value="5">Morti x 100k abitanti</option>
+                           <option value="6">Nuovi morti</option>
+                           <option value="7">Nuovi morti x 100k abitanti</option>
+                       </select>
+                   </div>
+                   <div id="boxViewData" class="vertical h-fill " style="align-content:start; background-color:lightgray" >
+                       <%=svg %>
+                   </div>
+               </div> 
            </div>
 
            <div class="horizontal" id="footer" >

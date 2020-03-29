@@ -56,7 +56,7 @@ Namespace Controllers
                 End If
 
                 Dim G = New Grafico
-                Return G.generaSvg(lea, 0, True, True)
+                Return G.generaSvg(lea, t, True, True)
             Catch ex As Exception
                 Throw New Exception("error: " & ex.Message)
             End Try
