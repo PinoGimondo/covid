@@ -43,7 +43,7 @@ Public Class AnalisiControl
     Private Sub MostraSvg()
         If WB IsNot Nothing And G IsNot Nothing Then
             G.MaxVertical = slScalaValori.Value
-            Dim s As String = String.Format(My.Resources.htmlpage, surl, My.Resources.svgstyle, My.Resources.svgScript, G.generaSvg(l, TipoDati.SelectedIndex, False, False))
+            Dim s As String = String.Format(My.Resources.htmlpage, surl, My.Resources.svgScript, G.generaSvg(l, TipoDati.SelectedIndex, False, False))
             WB.LoadHtml(s, surl)
         End If
     End Sub
