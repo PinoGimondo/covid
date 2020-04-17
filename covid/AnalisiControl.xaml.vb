@@ -8,7 +8,7 @@ Public Class AnalisiControl
     ReadOnly C As Casi = Application.C
     Public WithEvents jsc As JSConnector
     Protected WithEvents renderTimer As DispatcherTimer
-    Dim surl As String = "http://www.pardesca.it:4080/static/pillole/"
+    Dim surl As String = "http://www.pardesca.it:5080/static/pillole/"
     Dim G As Grafico
     Dim l As New List(Of ElementoAnalisi)
 
