@@ -2,7 +2,6 @@
 
 Public Class Regione
     Inherits ElementoAnalisi
-    Public Property province As New List(Of Provincia)
 
     Public Sub New()
         tipo = "R"
@@ -20,8 +19,8 @@ Public Class Regione
     End Property
 
     Public Sub leggi(dr As DataRow)
-        codice = dr("codice_regione")
-        label = dr("denominazione_regione")
+        codice = dr("REG")
+        label = dr("regione")
     End Sub
 End Class
 
@@ -45,11 +44,5 @@ Public Class ListaRegioni
         Next
         Return o
     End Function
-    Public Sub elaboraStime()
-        For Each r As Regione In Me.elementi.Values
-            r.stime.dati = r.dati
-            r.stime.elabora()
-        Next
-    End Sub
 
 End Class

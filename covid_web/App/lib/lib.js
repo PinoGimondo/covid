@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
@@ -185,7 +185,7 @@ var Page = /** @class */ (function () {
             Page._nonce += 1;
             return Page._nonce;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Page.msgbox = function (msg, onOk, type) {
@@ -237,7 +237,7 @@ var Component = /** @class */ (function () {
             else
                 return this.htmlElementId;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Component.prototype, "$", {
@@ -246,7 +246,7 @@ var Component = /** @class */ (function () {
                 this._$ = $("#" + this.renderedId);
             return this._$;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Component.prototype, "dataContext", {
@@ -259,7 +259,7 @@ var Component = /** @class */ (function () {
                 this.reRender(this._dataContext);
             }
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Component.updateComponents = function (newObject, oldObject) {
@@ -640,7 +640,7 @@ var AbstractList = /** @class */ (function (_super) {
     Object.defineProperty(AbstractList.prototype, "itemTemplateId", {
         get: function () { return this._itemTemplateId; },
         set: function (value) { this._itemTemplateId = value; this._itemTemplate = null; },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(AbstractList.prototype, "itemTemplate", {
@@ -649,7 +649,7 @@ var AbstractList = /** @class */ (function (_super) {
                 this._itemTemplate = Page.getComponentById(this._itemTemplateId);
             return this._itemTemplate;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     AbstractList.prototype.getItemsFromItemsSource = function (dc) {

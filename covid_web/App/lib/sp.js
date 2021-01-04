@@ -31,7 +31,7 @@ var World = /** @class */ (function () {
             World._nonce += 1;
             return World._nonce;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     World.prototype.newId = function () {

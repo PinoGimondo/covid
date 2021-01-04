@@ -1,13 +1,11 @@
-﻿Imports CefSharp
-Imports CefSharp.Wpf
+﻿Imports Microsoft.Web.WebView2.Wpf
 
 Public Class JSConnector
-    Protected browser As ChromiumWebBrowser
+    Protected browser As WebView2
     Public Event MessageReceived(sender As JSConnector, ByRef e As MessageReceivedEventArgs)
 
-    Public Sub New(br As ChromiumWebBrowser, Optional name As String = "jsc")
+    Public Sub New(br As WebView2, Optional name As String = "jsc")
         Me.browser = br
-        browser.JavascriptObjectRepository.Register(name, Me, True)
     End Sub
 
     Public Overridable Function msg(messaggio As String, par As Object) As String
@@ -23,16 +21,12 @@ Public Class JSConnector
         End Try
     End Function
 
-    Public Async Function execJSAsync(js As String) As Task(Of Object)
+    Public Async Function execJSAsync(js As String) As Task(Of String)
         Try
-            Dim resp As JavascriptResponse = Await browser.EvaluateScriptAsync(js)
-            If resp.Success Then
-                Return resp.Result
-            Else
-                Throw New Exception("Errore eseguendo javascript: " + resp.Message)
-            End If
+            Dim RES As String = Await browser.CoreWebView2.ExecuteScriptAsync(js)
+            Return RES
         Catch ex As Exception
-            Return Nothing
+            Return ""
         End Try
     End Function
 

@@ -5,7 +5,7 @@ Public Class g
     Public svg As String = ""
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim G = New Grafico
-        svg = G.generaSvg(New List(Of ElementoAnalisi), 0, False, False)
+        '  svg = G.generaSvg(New List(Of ElementoAnalisi), 0, False, False)
     End Sub
 
 End Class

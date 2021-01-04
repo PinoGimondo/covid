@@ -14,15 +14,12 @@ Class Application
     End Sub
 
     Public Shared Sub ingestDati()
-        C.da.ingestProciv()
-        C.da.ingestECDC()
-        C.da.elaboraDati()
         Application.caricaDati()
     End Sub
 
 
     Public Shared Sub caricaDati()
-        C.caricaDati()
+        C.caricaLuoghi()
     End Sub
 
     Private Sub Application_Exit(sender As Object, e As ExitEventArgs) Handles Me.[Exit]

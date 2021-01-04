@@ -28,8 +28,8 @@ svg {
 
 .testoGiorno {
     font-weight:300;
-    font: 12px verdana;
-    stroke: navy;
+    font: 8px verdana;
+    stroke: red;
     text-anchor :middle;
     opacity:.6;
 }
@@ -50,7 +50,7 @@ svg {
 
 .testoMese {
     font-weight: 300;
-    font: 18px verdana;
+    font: 12px verdana;
     stroke: navy;
     text-anchor: middle;
     opacity: .8;
@@ -92,39 +92,24 @@ svg {
     dominant-baseline: middle;
     cursor: pointer;
     background-color: transparent;
-    opacity: .6;
+    opacity: .9;
 }
 
-.S0 {
+.S2020 {
     stroke: blue;
 }
-.S1 {
+.S2019 {
     stroke: red;
 }
-.S2 {
-    stroke: green;
-}
-.S3 {
-    stroke: darkmagenta;
-}
-.S4 {
-    stroke: orange;
-}
-.S5 {
-    stroke: violet;
-}
-.S6 {
+.S2018 {
     stroke: darkcyan;
 }
-.S7 {
+.S2017 {
+    stroke: darkmagenta;
+}
+.S2016 {
+    stroke: maroon;
+}
+.S2015 {
     stroke: black;
-}
-.S8 {
-    stroke: salmon;
-}
-.S9 {
-    stroke:  greenyellow;
-}
-.S10 {
-    stroke:  yellow ;
 }

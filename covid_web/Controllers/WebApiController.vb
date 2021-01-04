@@ -7,21 +7,21 @@ Namespace Controllers
     Public Class WebApiController
         Inherits ApiController
 
-        <EnableCors("*", "*", "*")>
-        <Route("api/ds")>
-        <AcceptVerbs({"GET"})>
-        Public Function dataset() As CovidDataSet
-            Try
-                Dim da As New CovidOpenDataDataAdapter(My.Settings.connectionString)
-                Dim ds As DataSet = da.getDataset("all")
-                Dim cds As New CovidDataSet
-                cds.leggi(ds)
-                Return cds
-            Catch ex As Exception
-                Throw New Exception("error: " & ex.Message)
-            End Try
+        '<EnableCors("*", "*", "*")>
+        '<Route("api/ds")>
+        '<AcceptVerbs({"GET"})>
+        'Public Function dataset() As dati
+        '    Try
+        '        Dim da As New CovidDataAdapter(My.Settings.connectionString)
+        '        Dim ds As DataSet = da.getDataset("all")
+        '        Dim cds As New CovidDataSet
+        '        cds.leggi(ds)
+        '        Return cds
+        '    Catch ex As Exception
+        '        Throw New Exception("error: " & ex.Message)
+        '    End Try
 
-        End Function
+        'End Function
 
 
         <EnableCors("*", "*", "*")>
@@ -32,7 +32,7 @@ Namespace Controllers
                 Dim lea As New List(Of ElementoAnalisi)
                 If p IsNot Nothing Then
                     Dim C As New Casi(My.Settings.connectionString)
-                    C.caricaDati()
+                    C.caricaLuoghi()
 
                     Dim ss() As String = p.Split(",")
                     Dim tipo As String
@@ -42,9 +42,6 @@ Namespace Controllers
                         If s.Length > 2 Then
                             tipo = Left(s, 1)
                             code = Right(s, s.Length - 1)
-                            If tipo = "C" Then
-                                lea.Add(C.paesi.elementi.Item(code))
-                            End If
                             If tipo = "R" Then
                                 lea.Add(C.regioni.elementi.Item(code))
                             End If
@@ -56,7 +53,7 @@ Namespace Controllers
                 End If
 
                 Dim G = New Grafico
-                Return G.generaSvg(lea, t, True, True)
+                '        Return G.generaSvg(lea, t, True, True)
             Catch ex As Exception
                 Throw New Exception("error: " & ex.Message)
             End Try

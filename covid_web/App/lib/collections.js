@@ -7,7 +7,7 @@ var Stack = /** @class */ (function () {
         get: function () {
             return this._count;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Stack.prototype.isEmpty = function () {
@@ -61,7 +61,7 @@ var Dictonary = /** @class */ (function () {
         get: function () {
             return this.count;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Dictonary.prototype.Add = function (key, value) {
@@ -90,7 +90,7 @@ var Dictonary = /** @class */ (function () {
             }
             return keySet;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Dictonary.prototype, "_values", {
@@ -103,14 +103,14 @@ var Dictonary = /** @class */ (function () {
             }
             return values;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Dictonary.prototype, "Values", {
         get: function () {
             return this._items;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Dictonary.prototype.forEach = function (loop) {

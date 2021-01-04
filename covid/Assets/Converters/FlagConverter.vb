@@ -9,8 +9,7 @@ Public Class FlagConverter
             If value Is Nothing Then
                 Return "/covid;component/Images/noimage.png"
             Else
-                Dim p As Paese = value
-                Return String.Format("/covid;component/img/flags/{0}.png", p.codicePaese)
+                Return "/covid;component/Images/noimage.png"
             End If
         Catch ex As Exception
             Return "/covid;component/Images/noimage.png"

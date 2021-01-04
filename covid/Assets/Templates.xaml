@@ -7,27 +7,58 @@
         <ResourceDictionary Source="/Covid;component/Assets/converters.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
-    <HierarchicalDataTemplate x:Key="nodoProvincia"  >
+    <HierarchicalDataTemplate x:Key="_nodoProvincia"  >
         <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="{Binding denominazioneProvincia}" Margin="2" >
             <CheckBox IsChecked="{Binding isSelected}" ></CheckBox>
             <TextBlock Margin="4,0,0,0"  Text="{Binding denominazioneProvincia}" />
         </StackPanel>
     </HierarchicalDataTemplate>
 
-    <HierarchicalDataTemplate x:Key="nodoRegione" ItemsSource="{Binding province}" ItemTemplate="{StaticResource nodoProvincia}" >
+    <HierarchicalDataTemplate x:Key="_nodoRegione" ItemsSource="{Binding province}" ItemTemplate="{StaticResource nodoProvincia}" >
         <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="{Binding denominazioneRegione}" Margin="2" >
             <CheckBox IsChecked="{Binding isSelected}" ></CheckBox>
             <TextBlock  Margin="4,0,0,0" Text="{Binding denominazioneRegione}" />
         </StackPanel>
     </HierarchicalDataTemplate>
 
-    <HierarchicalDataTemplate x:Key="nodoPaese" ItemsSource="{Binding regioni}" ItemTemplate="{StaticResource nodoRegione}" >
+    <HierarchicalDataTemplate x:Key="_nodoPaese" ItemsSource="{Binding regioni}" ItemTemplate="{StaticResource nodoRegione}" >
         <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="dati italia" Margin="2" >
             <CheckBox IsChecked="{Binding isSelected}" Margin="2" ></CheckBox>
             <Image Source="{Binding Converter={StaticResource flagConverter}}" Width="22" ></Image>
             <TextBlock FontWeight="Bold" Margin="4,0,0,0"  Text="{Binding denominazionePaese}" />
         </StackPanel>
     </HierarchicalDataTemplate>
+
+    <HierarchicalDataTemplate x:Key="nodoComune"  >
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="{Binding label}" Margin="2" >
+            <TextBlock Margin="4,0,0,0"  Text="{Binding label}" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
+
+    <HierarchicalDataTemplate x:Key="nodoProvincia" ItemsSource="{Binding children}" ItemTemplate="{StaticResource nodoComune}" >
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="{Binding denominazioneProvincia}" Margin="2" >
+            <TextBlock Margin="4,0,0,0"  Text="{Binding label}" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
+
+    <HierarchicalDataTemplate x:Key="nodoRegione" ItemsSource="{Binding children}" ItemTemplate="{StaticResource nodoProvincia}" >
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="{Binding denominazioneRegione}" Margin="2" >
+            <TextBlock  Margin="4,0,0,0" Text="{Binding label}" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
+
+    <HierarchicalDataTemplate x:Key="nodoPaese" ItemsSource="{Binding children}" ItemTemplate="{StaticResource nodoRegione}" >
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="dati italia" Margin="2" >
+            <TextBlock FontWeight="Bold" Margin="4,0,0,0"  Text="{Binding label}" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
+
+
+
+
+
+
+
 
     <DataTemplate x:Key="itemProvincia">
         <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="CIAO" Margin="2" >
