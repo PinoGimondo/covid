@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:covid"
              xmlns:wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="1600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
@@ -60,13 +60,13 @@
                 </Grid.ColumnDefinitions>
                 <ToolBar Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center">
                         <TextBlock  FontWeight="bold" Margin="6">dati:</TextBlock>
-                    <RadioButton GroupName="A" Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbDati_G" IsChecked="true" >Giornalieri</RadioButton>
-                    <RadioButton GroupName="A" Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbDati_C" IsChecked="false" >Cumulativi</RadioButton>
+                    <RadioButton GroupName="A" Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbDati_G" IsChecked="true" >Giorn</RadioButton>
+                    <RadioButton GroupName="A" Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbDati_C" IsChecked="false" >Cumul</RadioButton>
                     <Separator />
                         <TextBlock FontWeight="bold" Margin="6">SESSO:</TextBlock>
-                    <RadioButton GroupName="B" Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbSesso_M" IsChecked="false" >Maschi</RadioButton>
-                    <RadioButton GroupName="B" Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbSesso_F" IsChecked="false" >Femmine</RadioButton>
-                    <RadioButton GroupName="B" Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbSesso_T" IsChecked="True" >Tutti</RadioButton>
+                    <RadioButton GroupName="B" Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbSesso_M" IsChecked="false" >M</RadioButton>
+                    <RadioButton GroupName="B" Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbSesso_F" IsChecked="false" >F</RadioButton>
+                    <RadioButton GroupName="B" Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbSesso_T" IsChecked="True" >T</RadioButton>
                     <Separator />
                     <TextBlock FontWeight="Bold" Margin="6">fascia di età (anni):</TextBlock>
                     <CheckBox Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbFascia_1" IsChecked="True" >0-4</CheckBox>
@@ -94,6 +94,10 @@
                     <Button Margin="2"  Click="cbNessuna_Click" Padding="1" ToolTip="deseleziona tutte le fasce di età" Name="cbNessuna" >nessuna</Button>
                     <Separator />
                     <TextBlock FontWeight="Bold" Margin="6">ANNO:</TextBlock>
+                    <CheckBox Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbAnno_2011" IsChecked="false" >2011</CheckBox>
+                    <CheckBox Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbAnno_2012" IsChecked="false" >2012</CheckBox>
+                    <CheckBox Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbAnno_2013" IsChecked="false" >2013</CheckBox>
+                    <CheckBox Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbAnno_2014" IsChecked="false" >2014</CheckBox>
                     <CheckBox Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbAnno_2015" IsChecked="false" >2015</CheckBox>
                     <CheckBox Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbAnno_2016" IsChecked="false" >2016</CheckBox>
                     <CheckBox Margin="2"  Unchecked="cbLabels_checkChanged" Checked="cbLabels_checkChanged" Padding="1" Name="cbAnno_2017" IsChecked="false" >2017</CheckBox>

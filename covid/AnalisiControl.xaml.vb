@@ -36,8 +36,8 @@ Public Class AnalisiControl
 
     Private Sub MostraSvg()
         If WV IsNot Nothing And G IsNot Nothing Then
-            '            WV.NavigateToString(String.Format(My.Resources.htmlpage, surl, My.Resources.svgScript, svg_toshow, My.Resources.svgstyle))
-            WV.NavigateToString(pageEmpty)
+            WV.NavigateToString(String.Format(My.Resources.htmlpage, surl, My.Resources.svgScript, svg_toshow, My.Resources.svgstyle))
+            ' WV.NavigateToString(pageEmpty)
         End If
     End Sub
 
@@ -91,6 +91,10 @@ Public Class AnalisiControl
             End If
 
             Dim sAnni As String = ""
+            If cbAnno_2011.IsChecked Then sAnni &= "2011,"
+            If cbAnno_2012.IsChecked Then sAnni &= "2012,"
+            If cbAnno_2013.IsChecked Then sAnni &= "2013,"
+            If cbAnno_2014.IsChecked Then sAnni &= "2014,"
             If cbAnno_2015.IsChecked Then sAnni &= "2015,"
             If cbAnno_2016.IsChecked Then sAnni &= "2016,"
             If cbAnno_2017.IsChecked Then sAnni &= "2017,"

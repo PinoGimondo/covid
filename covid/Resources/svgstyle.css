@@ -64,7 +64,7 @@ svg {
 }
 
 .LS {
-    opacity: .2;
+    opacity: .4;
     stroke-width:2px;
 }
 
@@ -97,19 +97,51 @@ svg {
 
 .S2020 {
     stroke: blue;
+    opacity: .4;
+    stroke-width: 3px;
 }
+
 .S2019 {
     stroke: red;
+    opacity: .2;
 }
+
 .S2018 {
     stroke: darkcyan;
+    opacity: .2;
 }
+
 .S2017 {
     stroke: darkmagenta;
+    opacity: .2;
 }
+
 .S2016 {
     stroke: maroon;
+    opacity: .2;
 }
+
 .S2015 {
     stroke: black;
+    opacity: .2;
+}
+
+.S2014 {
+    stroke: yellow;
+    opacity: .2;
+}
+
+.S2013 {
+    stroke: orange;
+    opacity: .2;
+}
+
+.S2012 {
+    stroke: navy;
+    opacity: .2;
+}
+
+.S2011 {
+    stroke: darkgreen;
+    opacity: .2;
 }
